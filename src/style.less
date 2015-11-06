@@ -1,0 +1,168 @@
+// styles
+
+
+@import (reference,once, less) "libs/bootstrap/bootstrap.less";
+@import (reference,once, less) "libs/mk/mk.less";
+
+
+@trianlge_size : 0.5em;
+
+.wpc-calc
+{
+
+	.form input:not([readonly])
+	{
+		background-color: Bisque;
+
+	}
+
+	.field
+	{
+		//.make-lg-column(6);
+		width : 10em;
+	}
+
+	.wpc-label-d
+	{
+		.label();
+		.label-default();
+		.mk-label-down();
+
+		&.lblue
+		{
+			background-color: @brand-info;
+			.mk-label-down(@brand-info);
+		}
+
+		&.green
+		{
+			background-color: @brand-success;
+			.mk-label-down(@brand-success);
+		}
+
+		&.blue
+		{
+			background-color: @brand-primary;
+			.mk-label-down(@brand-primary);
+		}
+
+		&.red
+		{
+			background-color: @brand-danger;
+			.mk-label-down(@brand-danger);
+		}
+	}
+
+	table
+	{
+		@border_border : 4px solid @brand-primary;
+		@body_block_index : 5;
+		@body_block_index1 : @body_block_index+1;
+		tbody
+		{
+			tr
+			{
+
+				td
+				{
+					vertical-align: bottom;
+				}
+
+				td:nth-child(@{body_block_index}), th:nth-child(@{body_block_index})
+				{
+					border-left: @border_border;
+				}
+				td:nth-child(@{body_block_index1}), th:nth-child(@{body_block_index1})
+				{
+					border-right: @border_border
+				}
+				&.header
+				{
+					th:nth-child( @{body_block_index} )
+					{
+						border-top: @border_border;
+					}
+					th:nth-child(@{body_block_index1})
+					{
+						border-top: @border_border
+					}
+				}
+
+				&.header
+				{
+					th:not(:empty)
+					{
+						border-bottom: 2px solid black;
+					}
+				}
+
+			}
+
+		}
+
+		tfoot
+		{
+			th:nth-child(2)
+			{
+				border-left: @border_border;
+				border-bottom: @border_border;
+			}
+			th:nth-child(3)
+			{
+				border-right: @border_border;
+				border-bottom: @border_border;
+			}
+		}
+	}
+
+
+	.wpc-input-group
+	{
+		.input-group();
+		//.make-lg-column(1);
+		//.make-xs-column(3);
+
+		&[class=wpc-input-group]
+		{
+			float: none;
+		}
+
+		padding-right: 0;
+		padding-left: 0;
+
+		input:extend( .form-control )
+		{
+			&:first-child
+			{
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			&:last-child
+			{
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+
+			//();
+		}
+
+		span
+		{
+			.input-group-addon();
+
+			&:first-child
+			{
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				border-right-width: 0;
+			}
+
+			&:last-child
+			{
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				border-left-width: 0;
+			}
+		}
+	}
+}
