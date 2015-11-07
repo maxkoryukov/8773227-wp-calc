@@ -1,8 +1,7 @@
 // styles
 
 
-@import (reference,once, less) "libs/bootstrap/bootstrap.less";
-@import (reference,once, less) "libs/mk/mk.less";
+@import (reference,once, less) "bootstrap-fm/bootstrap-fm.less";
 
 
 @trianlge_size : 0.5em;
@@ -26,30 +25,30 @@
 	{
 		.label();
 		.label-default();
-		.mk-label-down();
+		.mk-label-down(@gray-light, @trianlge_size);
 
 		&.lblue
 		{
 			background-color: @brand-info;
-			.mk-label-down(@brand-info);
+			.mk-label-down(@brand-info, @trianlge_size);
 		}
 
 		&.green
 		{
 			background-color: @brand-success;
-			.mk-label-down(@brand-success);
+			.mk-label-down(@brand-success, @trianlge_size);
 		}
 
 		&.blue
 		{
 			background-color: @brand-primary;
-			.mk-label-down(@brand-primary);
+			.mk-label-down(@brand-primary, @trianlge_size);
 		}
 
 		&.red
 		{
 			background-color: @brand-danger;
-			.mk-label-down(@brand-danger);
+			.mk-label-down(@brand-danger, @trianlge_size);
 		}
 	}
 
