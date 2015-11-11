@@ -15,6 +15,8 @@ var gutil = require( 'gulp-util' );
 var del = require('del');
 var vinylPaths = require('vinyl-paths');
 
+
+var dest_root = '../dist/calcseven-plugin';
 // var pcfg = require('./private.config.json');
 
 gulp.task('clean', function()
@@ -47,7 +49,7 @@ gulp.task('css', function()
 		//.pipe(csslint( {"adjoining-classes" : false} ))
 		//.pipe(csslint.reporter())
 
-		.pipe(gulp.dest('../dist/calcseven-plugin'))
+		.pipe(gulp.dest(dest_root))
 		.pipe(notify({ onLast:true, message: 'CSS task complete' }));
 });
 
@@ -58,11 +60,23 @@ gulp.task('php', function() {
 				'../plugin.php',
 			]
 		)
-		.pipe(gulp.dest('../dist/calcseven-plugin'))
+		.pipe(gulp.dest(dest_root))
 		.pipe(notify({ onLast:true, message: 'PHP task complete' }));
 });
 
-gulp.task('default', ['clean', 'css', 'php'], function()
+gulp.task('docs', function()
+{
+	return gulp.src(
+			[
+				'../docs/*',
+			]
+			, {base: '../'}
+		)
+		.pipe(gulp.dest(dest_root))
+		.pipe(notify({ onLast:true, message: 'DOCS task complete' }));
+});
+
+gulp.task('default', ['docs', 'css', 'php'], function()
 {
 	return;
 });
