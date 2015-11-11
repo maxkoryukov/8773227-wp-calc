@@ -1,3 +1,5 @@
 /task/*
 /src/bootstrap-fm
 /src/bootstrap-fm/*
+/src/dist/*
+/src/style.min.css

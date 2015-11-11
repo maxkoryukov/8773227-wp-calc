@@ -23,6 +23,16 @@
 	<title>7 Key Numbers - Goal Seek Calculator</title>
 </head>
 <body>
+
+<?php
+	$query = $_SERVER['PHP_SELF'];
+	$path = pathinfo( $query );
+	$p = $path['dirname'] . $path['basename'];
+
+	$c = intval($_GET["c"]);
+?>
+
+
 <div class="container">
 	<!-- Static navbar -->
 	<nav class="navbar navbar-default">
@@ -38,7 +48,11 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li><a href="<?php print($p . "?c=1") ?>">Calc 1</a></li>
+					<li><a href="<?php print($p . "?c=2") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 2</a></li>
+					<li><a href="<?php print($p . "?c=3") ?>">Calc 3</a></li>
+					<li><a href="<?php print($p . "?c=4") ?>">Calc 4</a></li>
+					<li><a href="<?php print($p . "?c=5") ?>">Calc 5</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -53,7 +67,10 @@
 
 	<main class="container">
 <?php
-	include ('calcseven-calc2.php');
+	if ($c > 0 && $c < 6)
+	{
+		include ('calcseven-calc' . $c . '.php');
+	}
 ?>
 	</main>
 </body>

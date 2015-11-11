@@ -4,7 +4,7 @@
  * Description: Financial calculators for WP
  * Author: MaxKoryukov
  * Author URI: https://github.com/maxkoryukov
- * Version: 0.0.1
+ * Version: 0.0.2
  * Plugin URI: https://github.com/maxkoryukov
  */
 
@@ -17,6 +17,7 @@ function calcseven_register_assets()
 }
 
 include_once( dirname( __FILE__ ) . '/calcseven-calc2-wrapper.php' );
+include_once( dirname( __FILE__ ) . '/calcseven-calc5-wrapper.php' );
 
 ?>
 
