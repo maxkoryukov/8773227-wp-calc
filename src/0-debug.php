@@ -48,11 +48,11 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<?php print($p . "?c=1") ?>">Calc 1</a></li>
+					<li><a href="<?php print($p . "?c=1") ?>">(proc) Calc 1</a></li>
 					<li><a href="<?php print($p . "?c=2") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 2</a></li>
-					<li><a href="<?php print($p . "?c=3") ?>">Calc 3</a></li>
-					<li><a href="<?php print($p . "?c=4") ?>">Calc 4</a></li>
-					<li><a href="<?php print($p . "?c=5") ?>">Calc 5</a></li>
+					<li><a href="<?php print($p . "?c=3") ?>">(not) Calc 3</a></li>
+					<li><a href="<?php print($p . "?c=4") ?>">(proc) Calc 4</a></li>
+					<li><a href="<?php print($p . "?c=5") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 5</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -64,6 +64,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<script src="http://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
 
 	<main class="container">
 <?php
