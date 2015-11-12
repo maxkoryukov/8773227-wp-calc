@@ -37,7 +37,7 @@ Sensitivity Analysis
 			<label for="id-t9FhOUqa1jp0wNux5Lcg">Business Name</label>
 			<input type="text" class="form-control" placeholder="Company Name" data-bind="value: business_name" id="id-t9FhOUqa1jp0wNux5Lcg" />
 
-<div class="container-fluid">
+			<h3>Key Drivers</h3>
 			<div class="table-responsive">
 			<table class="table-calc4">
 				<thead>
@@ -245,11 +245,130 @@ Sensitivity Analysis
 				</tbody>
 			</table>
 			</div>
-</div>
+
+<!-- TABLE Data Input Staffing & Overheads -->
+			<h3>Staffing Costs &amp; Overheads</h3>
+			<div class="table-responsive">
+			<table class="table-calc4">
+				<thead>
+					<th>Item</th>
+					<th>Budget</th>
+					<th>Note</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="3"><h5>Cost of sales</h5></td>
+					</tr>
+
+					<tr>
+						<th>Staffing Cost - chargeable staff</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: staffing_cost_chargeable" />
+						</td>
+						<td>
+							<p class="explanation">
+								Include wages, salaries, superannuation, payroll tax
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="3"><h5>Overheads</h5></td>
+					</tr>
+
+					<tr>
+						<th>General/Administration</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: administration" />
+						</td>
+						<td>
+							<p class="explanation">
+								Includes bank charges, depreciation, insurance, marketing, subscriptions, licences etc
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<th>Professional Fees</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: professional" />
+						</td>
+						<td>
+							<p class="explanation">
+								Includes accounting, legal, bookeeping, consulatnts fees
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<th>Office Running Costs</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: office_running" />
+						</td>
+						<td>
+							<p class="explanation">
+								Includes electricity, postage, stationery, security, computer software etc
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<th>Rent</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: rent" />
+						</td>
+						<td>
+							<p class="explanation">
+								Includes rent, rates
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<th>Motor Vehicle Costs</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: motor_rent" />
+						</td>
+						<td>
+							<p class="explanation">
+								include motor vehicle costs for all staff (fuel, lease costs, reg'n &amp; insurance, service, R&amp;M, tolls, parking)
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<th>Staffing Costs</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: staffing_cost" />
+						</td>
+						<td>
+							<p class="explanation">
+								staffing costs of all non-chargeable staff + oncosts, staff training, uniforms, travel
+							</p>
+						</td>
+					</tr>
+
+					<tr>
+						<th></th>
+						<td data-bind="text: roundcut(overheads_sum())">
+						</td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<th>Interest Expense</th>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: interest" />
+						</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+<!-- TABLE Data Input Staffing & Overheads -->
 
 		</form>
 	</section>
 </article>
 
-<script type="text/javascript" src="calcseven-calc4.js">
-</script>
+

@@ -14,10 +14,23 @@ jQuery(document).ready(function()
 {
 	var data =
 	{
+		/*common*/
 		business_name : "Sample Company",
 
+		/*sensivity analysis*/
 		utilisation_labour : 0, // in procent
 
+		/*STAFFING COSTS & OVERHEADS*/
+		staffing_cost_chargeable : 300000,
+		administration : 120000,
+		professional : 80000,
+		office_running : 100000,
+		rent : 150000,
+		motor_rent : 100000,
+		staffing_cost : 250000,
+		interest : 20000,
+
+		/*key drives*/
 		positions :
 		[
 			"Chargeable Staff Pos #1",
@@ -60,6 +73,26 @@ jQuery(document).ready(function()
 	{
 		this.business_name = ko.observable(v.business_name);
 
+		/*sensivity analysis*/
+		this.utilisation_labour = ko.observable(v.utilisation_labour);
+
+		/*STAFFING COSTS & OVERHEADS*/
+		this.staffing_cost_chargeable = ko.observable(v.staffing_cost_chargeable);
+		this.administration = ko.observable(v.administration);
+		this.professional = ko.observable(v.professional);
+		this.office_running = ko.observable(v.office_running);
+		this.rent = ko.observable(v.rent);
+		this.motor_rent = ko.observable(v.motor_rent);
+		this.staffing_cost = ko.observable(v.staffing_cost);
+		this.interest = ko.observable(v.interest);
+
+		this.overheads_sum = ko.computed(function() { return Number(this.administration())
+				+ Number(this.professional())
+				+ Number(this.office_running())
+				+ Number(this.rent())
+				+ Number(this.motor_rent())
+				+ Number(this.staffing_cost())
+				; }, this);
 
 		var kd = [];
 
@@ -68,6 +101,7 @@ jQuery(document).ready(function()
 		{
 			var ki = v.keydrives[keydrives_index];
 			var kdi = new Object();
+			kdi.parent = this;
 			for(a in ki)
 			{
 				if ( Object.prototype.toString.call(ki[a])==='[object Array]')
@@ -117,8 +151,8 @@ jQuery(document).ready(function()
 						return ko.computed(
 							function()
 							{
-								return this.utilisation()[i]() * (100 + 0) / 10000
-									* this.recovery()[i]() * (100 + 0) / 10000
+								return this.utilisation()[i]() * (100 + this.parent.utilisation_labour()) / 10000
+									* this.recovery()[i]() * (100 + this.parent.utilisation_labour()) / 10000
 									* this.capacity()[i]()
 								;
 							},
@@ -151,8 +185,6 @@ jQuery(document).ready(function()
 		this.keydrives = ko.observableArray(kd);
 
 		this.positions = v.positions;
-
-		//sales_cashflow: ko.computed(function() { return self.sales_1 * self.sales_3 * (self.finance_rate + 1); } ),
 	};
 
 	ko.applyBindings(new Model(data));

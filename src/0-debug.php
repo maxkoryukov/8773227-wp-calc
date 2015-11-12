@@ -73,6 +73,9 @@
 		include ('calcseven-calc' . $c . '.php');
 	}
 ?>
+
 	</main>
+	<script type="text/javascript" src="calcseven-calc4.js">
+	</script>
 </body>
 </html>
