@@ -53,6 +53,26 @@ gulp.task('css', function()
 		.pipe(notify({ onLast:true, message: 'CSS task complete' }));
 });
 
+
+// Javascript
+gulp.task('js', function()
+{
+	return gulp.src(
+			[
+				'../*.js',
+			]
+		)
+		//.pipe(concat('styles.css'))
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(uglify())
+
+		//.pipe(csslint( {"adjoining-classes" : false} ))
+		//.pipe(csslint.reporter())
+
+		.pipe(gulp.dest(dest_root))
+		.pipe(notify({ onLast:true, message: 'JS task complete' }));
+});
+
 gulp.task('php', function() {
 	return gulp.src(
 			[
@@ -76,7 +96,7 @@ gulp.task('docs', function()
 		.pipe(notify({ onLast:true, message: 'DOCS task complete' }));
 });
 
-gulp.task('default', ['docs', 'css', 'php'], function()
+gulp.task('default', ['docs', 'css', 'js', 'php'], function()
 {
 	return;
 });
