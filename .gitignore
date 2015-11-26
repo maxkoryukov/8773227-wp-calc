@@ -3,4 +3,5 @@
 /src/bootstrap-fm/*
 /src/dist/*
 /src/style.min.css
+/src/tmp/*
 /release/*

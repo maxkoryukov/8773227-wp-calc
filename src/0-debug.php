@@ -10,15 +10,27 @@
 	<meta name="author" content="Koryukov Maksim <maxkoryukov@yandex.ru>" />
 	<meta name="keywords" content="Calculator" />
 
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet" integrity="sha256-75xVS8o85bn5eLYm_4w6RBwEaK8lmb206bazL2dD8Fg=" crossorigin="anonymous">
-
 	<!-- DEV 
+	<link href="tmp/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.min.css">
 	 DEV -->
+
 	<link rel="stylesheet/less" type="text/css" href="style.less">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js" type="text/javascript"></script>
 
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet" integrity="sha256-75xVS8o85bn5eLYm_4w6RBwEaK8lmb206bazL2dD8Fg=" crossorigin="anonymous">
 
+<script>
+/*
+	moment = function(dt)
+	{
+		this.dt = dt;
+		this.format = function( f ) { return this.dt.toString(); };
+
+		return this;
+	}
+*/
+</script>
 
 	<title>7 Key Numbers - Goal Seek Calculator</title>
 </head>
@@ -59,6 +71,13 @@
 		</div><!--/.container-fluid -->
 	</nav>
 </div>
+
+
+<!--
+	<script src="tmp/knockout-3.3.0.js"></script>
+	<script src="tmp/jquery.min.js" type="text/javascript"></script>
+	<script src="tmp/bootstrap.min.js" ></script>
+-->
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>

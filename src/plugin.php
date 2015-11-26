@@ -21,6 +21,8 @@ function calcseven_register_assets()
 	wp_enqueue_script( 'calcseven-4', plugins_url('calcseven-calc4.js', __FILE__ ) , array('momentjs', 'knockout-js', 'jquery') );
 }
 
+calcseven_register_assets();
+
 include_once( dirname( __FILE__ ) . '/calcseven-calc1-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc2-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc4-wrapper.php' );
