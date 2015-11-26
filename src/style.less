@@ -15,7 +15,9 @@
 
 @blue-color : darken(#428bca, 6.5%);
 @green-color : @brand-success;
-
+@red-color : @brand-danger;
+@lblue-color : @brand-info;
+@yellow-color : #FFCC00;
 
 .wpc-calc
 {
@@ -89,7 +91,7 @@
 		&.red
 		{
 			background-color: @brand-danger;
-			.mk-label-down(@brand-danger, @trianlge_size);
+			.mk-label-down(@red-color, @trianlge_size);
 		}
 	}
 
@@ -324,4 +326,29 @@
 			padding:0;
 		}
 	}
+
+/*
+	COLORS
+*/
+
+	.-green-bg
+	{
+		background-color: @green-color;
+	}
+
+	.-yellow-bg
+	{
+		background-color: @yellow-color;		
+	}
+	
+	.-lblue-bg
+	{
+		background-color: @lblue-color;
+	}
+
+	.-red-fg
+	{
+		color: @red-color;
+	}
+
 }
