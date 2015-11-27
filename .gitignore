@@ -1,7 +1,7 @@
 /task/*
-/src/bootstrap-fm
-/src/bootstrap-fm/*
-/src/dist/*
+/bootstrap-fm
+/bootstrap-fm/*
+/dist/*
 /src/style.min.css
-/src/tmp/*
+/tmp/*
 /release/*
