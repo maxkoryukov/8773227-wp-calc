@@ -3,8 +3,8 @@
 /bootstrap-fm/*
 /dist/*
 /src/style.min.css
-/tmp/*
 /release/*
 /src/bootstrap-fm/*
 /src/bootstrap-fm
-/tmp
+/dev.cache
+/dev.cache/*

@@ -3,10 +3,11 @@
   "version": "0.0.2",
   "description": "fill from http://browsenpm.org/package.json",
   "devDependencies": {
+    "browserify": "^12.0.1",
     "del": "*",
     "gulp": "*",
     "gulp-autoprefixer": "*",
-    "gulp-concat": "*",
+    "gulp-browserify-globs": "^0.1.2",
     "gulp-csslint": "*",
     "gulp-csso": "*",
     "gulp-less": "*",
@@ -15,6 +16,9 @@
     "gulp-rename": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
-    "vinyl-paths": "*"
+    "moment": "^2.10.6",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-paths": "*",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

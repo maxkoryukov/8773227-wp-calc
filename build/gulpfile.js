@@ -4,14 +4,14 @@ var
 	rename = require('gulp-rename'),
 	autoprefixer = require('gulp-autoprefixer'),
 	uglify = require('gulp-uglify'),
-	csso = require('gulp-csso'),
+	//csso = require('gulp-csso'),
 	notify = require('gulp-notify'),
-	minifycss = require('gulp-minify-css');
+	minifycss = require('gulp-minify-css'),
+	gutil = require( 'gulp-util' );
 
-	//concat = require('gulp-concat'),
 	//csslint = require('gulp-csslint');
-
-var gutil = require( 'gulp-util' );
+var browserify = require('browserify');
+var browserifyGlobs = require('gulp-browserify-globs');
 var del = require('del');
 var vinylPaths = require('vinyl-paths');
 
@@ -42,7 +42,7 @@ gulp.task('css', function()
 		.pipe(less())
 		//.pipe(concat('styles.css'))
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-		.pipe(rename({ suffix: '.min' }))
+		.pipe(rename({suffix: '.min' }))
 		.pipe(minifycss())
 		//.pipe(csso())
 
@@ -57,20 +57,28 @@ gulp.task('css', function()
 // Javascript
 gulp.task('js', function()
 {
-	return gulp.src(
+	return browserifyGlobs(
 			[
-				'../src/*.js',
+					'../src/*.js',
 			]
 		)
-		//.pipe(concat('styles.css'))
-		.pipe(rename({ suffix: '.min' }))
+
+		.pipe(rename({
+			suffix: '.min',
+			basename: "cfo-on-call-calcseven",
+			extname: ".js"
+		}))
+
+
+		//.pipe(buffer())
 		.pipe(uglify())
+		.on('error', notify)
 
 		//.pipe(csslint( {"adjoining-classes" : false} ))
 		//.pipe(csslint.reporter())
 
 		.pipe(gulp.dest(dest_root))
-		.pipe(notify({ onLast:true, message: 'JS task complete' }));
+		.pipe(notify({ onLast:true, title:'Task JS', message: 'Completed to the : <%= file.relative %>' }))
 });
 
 gulp.task('php', function() {
@@ -84,7 +92,9 @@ gulp.task('php', function() {
 		.pipe(notify({ onLast:true, message: 'PHP task complete' }));
 });
 
-gulp.task('docs', function()
+
+
+gulp.task('docs', ['docs:markdown'], function()
 {
 	return gulp.src(
 			[
@@ -95,6 +105,19 @@ gulp.task('docs', function()
 		.pipe(gulp.dest(dest_root))
 		.pipe(notify({ onLast:true, message: 'DOCS task complete' }));
 });
+gulp.task('docs:markdown', function()
+{
+	return gulp.src(
+			[
+				'../README.md',
+				'../CHANGELOG.md',
+			]
+			, {base: '../'}
+		)
+		.pipe(gulp.dest(dest_root));
+});
+
+
 
 gulp.task('default', ['docs', 'css', 'js', 'php'], function()
 {
