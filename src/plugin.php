@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: CFO-Calculators
- * Description: Financial calculators for WP
+ * Description: Financial calculators for 'CFO On Call'
  * Author: MaxKoryukov
  * Author URI: https://github.com/maxkoryukov
  * Version: 0.0.6
@@ -18,7 +18,7 @@ function calcseven_register_assets()
 	wp_enqueue_script( 'knockout-js', 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js', array('jquery'), '3.3.0', true );
 	wp_enqueue_script( 'momentjs', 'http://momentjs.com/downloads/moment.min.js', array(), '2.10.6', true );
 
-	wp_enqueue_script( 'calcseven-4', plugins_url('calcseven-calc4.js', __FILE__ ) , array('momentjs', 'knockout-js', 'jquery') );
+	wp_enqueue_script( 'calcseven-4', plugins_url('calcseven-calc4.min.js', __FILE__ ) , array('momentjs', 'knockout-js', 'jquery') );
 }
 
 calcseven_register_assets();
