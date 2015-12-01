@@ -1,4 +1,3 @@
-
 <article class="wpc-calc">
 	<section>
 		<h2>Breakeven Calculator</h2>

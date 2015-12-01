@@ -659,5 +659,3 @@
 		</form>
 	</section>
 </article>
-
-

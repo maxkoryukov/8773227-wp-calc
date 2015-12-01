@@ -9,4 +9,3 @@ function calcseven_calc5_shortcode( $atts )
 
 add_shortcode( 'calcseven_calc5', 'calcseven_calc5_shortcode' );
 ?>
-

@@ -36,7 +36,7 @@ gulp.task('css', function()
 {
 	return gulp.src(
 			[
-				'../*.less',
+				'../src/*.less',
 			]
 		)
 		.pipe(less())
@@ -59,7 +59,7 @@ gulp.task('js', function()
 {
 	return gulp.src(
 			[
-				'../*.js',
+				'../src/*.js',
 			]
 		)
 		//.pipe(concat('styles.css'))
@@ -76,8 +76,8 @@ gulp.task('js', function()
 gulp.task('php', function() {
 	return gulp.src(
 			[
-				'../calcseven*.php',
-				'../plugin.php',
+				'../src/calcseven*.php',
+				'../src/plugin.php',
 			]
 		)
 		.pipe(gulp.dest(dest_root))

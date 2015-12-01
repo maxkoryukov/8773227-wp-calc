@@ -1,4 +1,3 @@
-
 <article class="wpc-calc">
 	<section>
 		<h2>7 Key Numbers - Goal Seek Calculator</h2>

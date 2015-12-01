@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: WP-CalcSeven
+ * Plugin Name: CFO-Calculators
  * Description: Financial calculators for WP
  * Author: MaxKoryukov
  * Author URI: https://github.com/maxkoryukov
- * Version: 0.0.4
- * Plugin URI: https://github.com/maxkoryukov
+ * Version: 0.0.6
+ * Plugin URI: http://www.cfooncallmembers.com.au/
  */
 
 function calcseven_register_assets()
@@ -29,4 +29,3 @@ include_once( dirname( __FILE__ ) . '/calcseven-calc4-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc5-wrapper.php' );
 
 ?>
-
