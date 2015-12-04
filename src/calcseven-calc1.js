@@ -3,18 +3,18 @@ function CalcSevenModel01 (v)
 	this.business_name = ko.observable(v.business_name);
 
 	/*sensivity analysis*/
-	this.debtors_000 = ko.observable(v.debtors_000);
-	this.debtors_030 = ko.observable(v.debtors_030);
-	this.debtors_060 = ko.observable(v.debtors_060);
-	this.debtors_090 = ko.observable(v.debtors_090);
-	this.debtors_120 = ko.observable(v.debtors_120);
+	this.debtx_000 = ko.observable(v.debtx_000);
+	this.debtx_030 = ko.observable(v.debtx_030);
+	this.debtx_060 = ko.observable(v.debtx_060);
+	this.debtx_090 = ko.observable(v.debtx_090);
+	this.debtx_120 = ko.observable(v.debtx_120);
 
-	this.debors_sum = ko.computed(function() {
-		return this.debtors_000()
-			+ this.debtors_030()
-			+ this.debtors_060()
-			+ this.debtors_090()
-			+ this.debtors_120()
+	this.debtx_sum = ko.computed(function() {
+		return Number(this.debtx_000())
+			+ Number(this.debtx_030())
+			+ Number(this.debtx_060())
+			+ Number(this.debtx_090())
+			+ Number(this.debtx_120())
 			;
 	}, this);
 
@@ -49,13 +49,26 @@ function CalcSevenModel01 (v)
 
 		if (ddo.is_actual)
 		{
+			// actual
 			ddo.receipts = ko.computed( function() { return this.closing() - this.opening() - this.revenue(); }, ddo );
 		}
 		else
 		{
-			ddo.debt_sum = ko.computed( function() { return 50000; }, ddo);
+			// forecast
+			ddo.debt_000 = ko.computed( function() { return this.parent.debtx_000() * this.previous.revenue() / 100; }, ddo );
+			ddo.debt_030 = ko.computed( function() { return this.parent.debtx_030() * this.previous.previous.revenue() / 100; }, ddo );
+			ddo.debt_060 = ko.computed( function() { return this.parent.debtx_060() * this.previous.previous.previous.revenue() / 100; }, ddo );
+			ddo.debt_090 = ko.computed( function() { return this.parent.debtx_090() * this.previous.previous.previous.previous.revenue() / 100; }, ddo );
+			ddo.debt_120 = ko.computed( function() { return this.parent.debtx_120() * this.previous.previous.previous.previous.previous.revenue() / 100; }, ddo );
+
+			ddo.debt_sum = ko.computed( function() { return Number(this.debt_000())
+				+ Number(this.debt_030())
+				+ Number(this.debt_060())
+				+ Number(this.debt_090())
+				+ Number(this.debt_120());
+			}, ddo);
 			ddo.receipts = ko.computed( function() { return 0-this.debt_sum(); }, ddo );
-			ddo.closing = ko.computed( function() { this.opening() + this.revenue() + this.receipts(); }, ddo );
+			ddo.closing = ko.computed( function() { return Number(this.opening()) + Number(this.revenue()) + Number(this.receipts()); }, ddo );
 		}
 /*
 		kdi.recovery_labour_impact = ko.observableArray();
@@ -79,11 +92,11 @@ CalcSevenModel01.getSampleData = function()
 		business_name : "Sample Company",
 
 		/* xxx */
-		debtors_000 : 50,
-		debtors_030 : 30,
-		debtors_060 : 10,
-		debtors_090 : 5,
-		debtors_120 : 5,
+		debtx_000 : 50,
+		debtx_030 : 30,
+		debtx_060 : 10,
+		debtx_090 : 5,
+		debtx_120 : 5,
 
 		initial_opening : 20000,
 
@@ -106,9 +119,14 @@ CalcSevenModel01.getSampleData = function()
 				closing : 32000,
 			},
 			{
-				dt : new Date(2014, 02, 1),
+				dt : new Date(2014, 04, 1),
 				revenue: 24000,
 				closing : 37000,
+			},
+			{
+				dt : new Date(2014, 05, 1),
+				revenue: 21000,
+				closing : 42000,
 			},
 
 

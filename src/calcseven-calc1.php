@@ -39,7 +39,7 @@
 								<date data-bind="text: moment(d.dt()).format('MMM-YY')"></date>
 							</div>
 							<div>
-								<span class="label" data-bind="css: {'label-actual' : d.is_actual, 'label-forecast' : !d.is_actual }">actual</span>
+								<span class="label" data-bind="css: {'label-actual' : d.is_actual, 'label-forecast' : !d.is_actual }, text: d.is_actual?'actual':'forecast' ">actual</span>
 							</div>
 						</th>
 <!-- /ko -->
@@ -87,7 +87,7 @@
 <!-- ko foreach: { data: debts, as: 'd' } -->
 
 							<td class="-no-pad">
-								<span data-bind="text: d.receipts()"></span>
+								<span data-bind="text: Math.abs(d.receipts()), css: {'-negative-number' : d.receipts() < 0 }"></span>
 							</td>
 <!-- /ko -->
 					</tr>
@@ -96,21 +96,128 @@
 						<th>Closing</th>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 
+						<!-- ko if: d.is_actual -->
 							<td class="-no-pad">
 								<input type="number" data-bind="value: d.closing" />
 							</td>
+						<!-- /ko -->
+						<!-- ko if: !d.is_actual -->
+							<td class="-no-pad">
+								<span data-bind="text: d.closing()"></span>
+							</td>
+						<!-- /ko -->
+<!-- /ko -->
+					</tr>
+					<tr>
+						<td data-bind="attr: {colspan: debts_length()+1}">
+						</td>
+					</tr>
+					<tr class="debtors-days">
+						<th><h4><div>Debtors days</div></h4></th>
+<!-- ko foreach: { data: debts, as: 'd' } -->
+
+							<td>
+								<div data-bind="text: 1"></div>
+							</td>
+<!-- /ko -->
+					</tr>
+				</tbody>
+				<tbody class="-green-fg">
+					<tr>
+						<td data-bind="attr: {colspan: debts_length()+1}">
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="7"></td>
+						<td data-bind="attr: {colspan: debts_length()}"><h4>Cash Collection</h4>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">Debtors - Current</td>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: debtx_000" />
+						</td>
+						<td></td>
+<!-- ko foreach: { data: debts, as: 'd' } -->
+						<!-- ko if: !d.is_actual -->
+							<td>
+								<span data-bind="text: d.debt_000()" ></span>
+							</td>
+						<!-- /ko -->
+<!-- /ko -->
+					</tr>
+					<tr>
+						<td colspan="3">Debtors - 30 days</td>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: debtx_030" />
+						</td>
+						<td></td>
+<!-- ko foreach: { data: debts, as: 'd' } -->
+						<!-- ko if: !d.is_actual -->
+							<td>
+								<span data-bind="text: d.debt_030()" ></span>
+							</td>
+						<!-- /ko -->
+<!-- /ko -->
+					</tr>
+					<tr>
+						<td colspan="3">Debtors - 60 days</td>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: debtx_060" />
+						</td>
+						<td></td>
+<!-- ko foreach: { data: debts, as: 'd' } -->
+						<!-- ko if: !d.is_actual -->
+							<td>
+								<span data-bind="text: d.debt_060()" ></span>
+							</td>
+						<!-- /ko -->
+<!-- /ko -->
+					</tr>
+					<tr>
+						<td colspan="3">Debtors - 90 days</td>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: debtx_090" />
+						</td>
+						<td></td>
+<!-- ko foreach: { data: debts, as: 'd' } -->
+						<!-- ko if: !d.is_actual -->
+							<td>
+								<span data-bind="text: d.debt_090()" ></span>
+							</td>
+						<!-- /ko -->
+<!-- /ko -->
+					</tr>
+					<tr>
+						<td colspan="3">Debtors - 120 days</td>
+						<td class="-no-pad">
+							<input type="number" data-bind="value: debtx_120" />
+						</td>
+						<td></td>
+<!-- ko foreach: { data: debts, as: 'd' } -->
+						<!-- ko if: !d.is_actual -->
+							<td>
+								<span data-bind="text: d.debt_120()" ></span>
+							</td>
+						<!-- /ko -->
 <!-- /ko -->
 					</tr>
 
-						<td>
-							<div class="field">
-								<div class="wpc-input-group">
-									<span>$</span>
-									<input type="number" readonly="readonly" data-bind="value: cost_m()"/>
-								</div>
-							</div>
-						</td>
-						<!--whitespace-->
+					<tr>
+						<th colspan="3">Total Receipts</th>
+						<th>
+							<div data-bind="text: debtx_sum() +'%'"></div>
+							<div data-bind="visible: debtx_sum() != 100"><span class="label label-danger">&ne; 100%</span></div>
+						</th>
+						<td></td>
+<!-- ko foreach: { data: debts, as: 'd' } -->
+						<!-- ko if: !d.is_actual -->
+							<th>
+								<span data-bind="text: d.debt_sum()" ></span>
+							</th>
+						<!-- /ko -->
+<!-- /ko -->
+					</tr>
 
 				</tbody>
 			</table>
