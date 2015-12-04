@@ -160,6 +160,33 @@
 	/* TABLES */
 
 	/* *************
+	 	TABLE 1
+	************* */
+	.table-calc1:extend(.table)
+	{
+		.table();
+
+		/* @border_border : 6px solid lighten(@green-color, 10%); */
+
+		.label-actual
+		{
+			.label-default();
+		}
+
+		.label-forecast
+		{
+			.label-primary();
+		}
+
+		td input
+		{
+			border-width:0;
+			width:100%;
+			height: 100%;
+		}
+	}
+
+	/* *************
 	 	TABLE 2
 	   ************* */
 	.table-calc2:extend(.table)
@@ -225,6 +252,23 @@
 			}
 		}
 	}
+
+	/* *************
+	 	TABLE 4
+	   ************* */
+	.table-calc4:extend(.table)
+	{
+		.table();
+		.table-bordered();
+
+		td input
+		{
+			border-width:0;
+			width:100%;
+			height: 100%;
+		}
+	}
+
 
 	/* *************
 	 	TABLE 5
@@ -305,32 +349,18 @@
 		}
 	}
 
-
-	/* *************
-	 	TABLE 4
-	   ************* */
-	.table-calc4:extend(.table)
+	table tbody tr td.-no-pad
 	{
-		.table();
-		.table-bordered();
-
-		td input
+		padding:0;
+		input
 		{
-			border-width:0;
-			width:100%;
-			height: 100%;
-		}
-
-		.-no-pad
-		{
-			padding:0;
+			padding-left:.7em;
 		}
 	}
 
 /*
 	COLORS
 */
-
 	.-green-bg
 	{
 		background-color: @green-color;
@@ -338,9 +368,19 @@
 
 	.-yellow-bg
 	{
-		background-color: @yellow-color;		
+		background-color: @yellow-color;
 	}
-	
+
+	.-blue-bg
+	{
+		background-color: @blue-color;
+	}
+
+	.-blue-fg
+	{
+		color: @blue-color;
+	}
+
 	.-lblue-bg
 	{
 		background-color: @lblue-color;

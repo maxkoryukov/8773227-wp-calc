@@ -99,6 +99,7 @@
 
 	</main>
 	<script type="text/javascript" src="src/calcseven-calc4.js"></script>
+	<script type="text/javascript" src="src/calcseven-calc1.js"></script>
 	<script type="text/javascript" src="src/roundcut.js"></script>
 </body>
 </html>
