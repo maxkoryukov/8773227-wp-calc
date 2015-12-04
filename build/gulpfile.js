@@ -15,7 +15,6 @@ var browserifyGlobs = require('gulp-browserify-globs');
 var del = require('del');
 var vinylPaths = require('vinyl-paths');
 
-
 var dest_root = '../dist/calcseven-plugin';
 // var pcfg = require('./private.config.json');
 

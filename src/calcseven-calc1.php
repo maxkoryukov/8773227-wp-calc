@@ -1,19 +1,32 @@
 <article class="wpc-calc">
 	<section>
-		<h2>Breakeven Calculator</h2>
+		<?php
+			echo '<h2>'.$calcseven_settings['title'] . '</h2>';
+		?>
 		<div class="panel-howtouse">
 			<div class="panel-heading"><h4><i class="glyphicon glyphicon-info-sign"></i> How to use</h4></div>
 			<div class="panel-body">
-				<p class="explanation">
-					Fill in the details required in the <span class="wpc-howtouse-input-label">Yellow Highlighted Areas</span> - The results will then appear in Blue for <q class="wpc-blue-marked-result">Sales required to Breakeven</q>,
-					<q class="wpc-blue-marked-result">Number of Sales required to Breakeven</q>, and <q class="wpc-blue-marked-result">Number of Sales required to Reach Target Profit</q>
-				</p>
+				<section class="explanation">
+					<p>Enter numbers into <span class="wpc-howtouse-input-label">yellow highlighted cells only</span></p>
+
+					<p>
+						Need 5 months worth of actual dataprior to the forecast period to be able to calculate cash collections.
+					</p>
+
+					<ol>
+						<li>Enter the date you want to start forecasting collections cash flow.</li>
+						<li>Enter the opening Accounts Receivable balance for the correct month in the top left cell.</li>
+						<li>Enter the Revenue that is invoiced each month - Including GST (do not included Cash Sale Revenue).</li>
+						<li>Enter the Closing Accounts Receivable balance for the first 5 months from your balance sheet - this will be calculated for the purple forecast months.</li>
+						<li>Enter the % that is collected in current month, within 30 days to 129 days - these must = 100% - if wrong then an error alert with be Red at the bottom of these percentages.</li>
+					</ol>
+				</section>
 			</div>
 		</div>
 		<form class="form">
 
 			<div class="table-responsive">
-			<table class="table-calc5">
+			<table class="table-calc1">
 				<tbody>
 					<tr>
 						<th><label for="id-6NKUdkToVxjbwZeLlRBq">Business Name</label></th>

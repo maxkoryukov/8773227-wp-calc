@@ -1,7 +1,13 @@
 
 <article class="wpc-calc">
 	<section>
-		<h2>Labour Hours Profit Booster Calculator</h2>
+		<?php
+			if (!is_null($calcseven_settings['title']))
+			{
+				echo '<h2>'.$calcseven_settings['title'] . '</h2>';
+			}
+		?>
+
 		<div class="panel-howtouse">
 			<div class="panel-heading"><h4><i class="glyphicon glyphicon-info-sign"></i> How to use</h4></div>
 			<div class="panel-body">
@@ -659,3 +665,11 @@
 		</form>
 	</section>
 </article>
+
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+	var data = new CalcSevenModel04( CalcSevenModel04.getSampleData() );
+	ko.applyBindings(data);
+});
+</script>

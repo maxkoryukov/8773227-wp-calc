@@ -10,12 +10,12 @@
 	<meta name="author" content="Koryukov Maksim <maxkoryukov@yandex.ru>" />
 	<meta name="keywords" content="Calculator" />
 
-	<!-- DEV 
+	<!-- DEV
 	<link href="tmp/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.min.css">
 	 DEV -->
 
-	<link rel="stylesheet/less" type="text/css" href="style.less">
+	<link rel="stylesheet/less" type="text/css" href="src/style.less">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js" type="text/javascript"></script>
 
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet" integrity="sha256-75xVS8o85bn5eLYm_4w6RBwEaK8lmb206bazL2dD8Fg=" crossorigin="anonymous">
@@ -42,6 +42,10 @@
 	$p = $path['dirname'] . $path['basename'];
 
 	$c = intval($_GET["c"]);
+
+
+	// settings for plugin. Normally, they are set in the plugin's body.
+	$calcseven_settings = array('title' => 'aasdf');
 ?>
 
 
@@ -63,7 +67,7 @@
 					<li><a href="<?php print($p . "?c=1") ?>">(proc) Calc 1</a></li>
 					<li><a href="<?php print($p . "?c=2") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 2</a></li>
 					<li><a href="<?php print($p . "?c=3") ?>">(not) Calc 3</a></li>
-					<li><a href="<?php print($p . "?c=4") ?>">(proc) Calc 4</a></li>
+					<li><a href="<?php print($p . "?c=4") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 4</a></li>
 					<li><a href="<?php print($p . "?c=5") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 5</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
@@ -89,12 +93,12 @@
 <?php
 	if ($c > 0 && $c < 6)
 	{
-		include ('calcseven-calc' . $c . '.php');
+		include ('src/calcseven-calc' . $c . '.php');
 	}
 ?>
 
 	</main>
-	<script type="text/javascript" src="calcseven-calc4.js">
-	</script>
+	<script type="text/javascript" src="src/calcseven-calc4.js"></script>
+	<script type="text/javascript" src="src/roundcut.js"></script>
 </body>
 </html>

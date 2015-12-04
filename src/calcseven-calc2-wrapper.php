@@ -2,6 +2,11 @@
 
 function calcseven_calc2_shortcode( $atts )
 {
+	$calcseven_settings = shortcode_atts(
+		array('title' => NULL),
+		$atts
+	);
+
 	calcseven_register_assets();
 
 	include ( dirname( __FILE__ ) . '/calcseven-calc2.php' );
