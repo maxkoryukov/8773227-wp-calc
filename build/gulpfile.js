@@ -11,14 +11,12 @@ var
 
 	//csslint = require('gulp-csslint');
 var browserify = require('browserify');
-var browserifyGlobs = require('gulp-browserify-globs');
 var del = require('del');
 var vinylPaths = require('vinyl-paths');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
 var dest_root = '../dist/calcseven-plugin';
-// var pcfg = require('./private.config.json');
 
 gulp.task('clean', function()
 {
@@ -45,29 +43,13 @@ gulp.task('js', function()
 		.pipe(notify({ onLast:true, title:'Task JS', message: 'Completed to the : <%= file.relative %>' }))
 		;
 
-	return browserifyGlobs(
-			[
-					'../src/*.js',
-			]
-		)
-
+/*
 		.pipe(rename({
 			suffix: '.min',
 			basename: "cfo-on-call-calcseven",
 			extname: ".js"
 		}))
-
-
-		//.pipe(buffer())
-		//.pipe(uglify())
-		.on('error', notify)
-
-		//.pipe(csslint( {"adjoining-classes" : false} ))
-		//.pipe(csslint.reporter())
-
-		.pipe(gulp.dest(dest_root))
-		.pipe(notify({ onLast:true, title:'Task JS', message: 'Completed to the : <%= file.relative %>' }))
-		;
+*/
 });
 
 // Styles

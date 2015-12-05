@@ -25,6 +25,7 @@ calcseven_register_assets();
 
 include_once( dirname( __FILE__ ) . '/calcseven-calc1-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc2-wrapper.php' );
+include_once( dirname( __FILE__ ) . '/calcseven-calc3-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc4-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc5-wrapper.php' );
 
