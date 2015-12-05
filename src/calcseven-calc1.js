@@ -41,11 +41,10 @@ function CalcSevenModel01 (v)
 		}
 
 		ddo.is_actual = this.debts().length < 5;
-
-		if ( prev )
-			ddo.opening = ko.computed(function() { return this.previous.closing(); }, ddo );
-		else
+		if ( typeof(ddo.previous) === 'undefined' )
 			ddo.opening = ko.computed(function() { return this.parent.initial_opening(); }, ddo );
+		else
+			ddo.opening = ko.computed(function() { return this.previous.closing(); }, ddo );
 
 		if (ddo.is_actual)
 		{
@@ -70,12 +69,8 @@ function CalcSevenModel01 (v)
 			ddo.receipts = ko.computed( function() { return 0-this.debt_sum(); }, ddo );
 			ddo.closing = ko.computed( function() { return Number(this.opening()) + Number(this.revenue()) + Number(this.receipts()); }, ddo );
 		}
-/*
-		kdi.recovery_labour_impact = ko.observableArray();
-		kdi.profit_net_b37 = ko.computed(function(){
-			return this.profit_before_interest_b32() - this.parent.interest()/this.parent.keydrives_length();
-		}, kdi);
-*/
+
+		ddo.debtors_days = ko.computed( function () { return this.closing()/this.revenue()*30; }, ddo);
 
 		this.debts.push(ddo);
 		prev = ddo;

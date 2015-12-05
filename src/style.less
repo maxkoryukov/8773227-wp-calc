@@ -187,9 +187,40 @@
 			height: 100%;
 		}
 
-		td
+		@green-border : 4px solid @green-color;
+		td,th
 		{
 			min-width: 5em;
+			&.-no-border
+			{
+				border-color: transparent;
+			}
+			&.-border
+			{
+				@border-border : 1px solid @table-border-color;
+				border-left:@border-border;
+				border-right:@border-border;
+				border-bottom:@border-border;
+			}
+		}
+		td, th
+		{
+			&.-green-t
+			{
+				border-top: @green-border;
+			}
+			&.-green-b, &.-green-b -no-border
+			{
+				border-bottom: @green-border;
+			}
+			&.-green-l
+			{
+				border-left: @green-border;
+			}
+			&:last-child.-green-r
+			{
+				border-right: @green-border;
+			}
 		}
 
 		.debtors-days
@@ -386,7 +417,6 @@
 
 	.-negative-number
 	{
-		color: @red-color;
 
 		&:before
 		{

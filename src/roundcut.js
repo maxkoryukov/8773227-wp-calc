@@ -8,8 +8,7 @@ function roundcut (val, count)
 	if (val && Object.prototype.toString.call(val) === '[object Function]')
 		x = val();
 
-	var r = RegExp('(\\.\\d{0,' + count.toString() + '}).*');
-
-	x = x.toString().replace(r, "$1");
+	x = Number(x);
+	x = x.toFixed(count);
 	return Number(x);
 };

@@ -32,9 +32,9 @@
 			<table class="table-calc1">
 				<thead>
 					<tr>
-						<th></th>
+						<th class='-no-border'></th>
 <!-- ko foreach: { data: debts, as: 'd' } -->
-						<th>
+						<th class="-border">
 							<div>
 								<date data-bind="text: moment(d.dt()).format('MMM-YY')"></date>
 							</div>
@@ -55,69 +55,69 @@
 <!-- /ko -->
 					</tr>
 					<tr>
-						<th>Opening</th>
+						<th class='-no-border'>Opening</th>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 
 							<!-- ko if: $index() == 0 -->
-								<td class="-no-pad">
+								<td class="-border -no-pad">
 									<input type="number" data-bind="value: d.parent.initial_opening" />
 								</td>
 							<!-- /ko -->
 
 							<!-- ko if: $index() > 0 -->
-								<td>
-									<span data-bind="text: d.opening()"></span>
+								<td class="-border">
+									<span data-bind="text: roundcut(d.opening())"></span>
 								</td>
 							<!-- /ko -->
 <!-- /ko -->
 					</tr>
 
 					<tr>
-						<th class="-blue-fg">Revenue (incl GST)</th>
+						<th class="-blue-fg -no-border">Revenue (incl GST)</th>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 
-							<td class="-no-pad">
+							<td class="-no-pad -border">
 								<input type="number" data-bind="value: d.revenue" />
 							</td>
 <!-- /ko -->
 					</tr>
 
 					<tr>
-						<th class="-green-fg">Receipts</th>
+						<th class="-green-fg -no-border">Receipts</th>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 
-							<td class="-no-pad">
-								<span data-bind="text: Math.abs(d.receipts()), css: {'-negative-number' : d.receipts() < 0 }"></span>
+							<td class="-border">
+								<span data-bind="text: Math.abs(roundcut(d.receipts())), css: {'-negative-number -red-fg' : d.receipts() < 0 }"></span>
 							</td>
 <!-- /ko -->
 					</tr>
 
 					<tr>
-						<th>Closing</th>
+						<th class='-no-border'>Closing</th>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 
 						<!-- ko if: d.is_actual -->
-							<td class="-no-pad">
+							<td class="-no-pad -border">
 								<input type="number" data-bind="value: d.closing" />
 							</td>
 						<!-- /ko -->
 						<!-- ko if: !d.is_actual -->
-							<td class="-no-pad">
-								<span data-bind="text: d.closing()"></span>
+							<td class="-border">
+								<span data-bind="text: roundcut(d.closing())"></span>
 							</td>
 						<!-- /ko -->
 <!-- /ko -->
 					</tr>
 					<tr>
-						<td data-bind="attr: {colspan: debts_length()+1}">
+						<td class="-no-border" data-bind="attr: {colspan: debts_length()+1}">
 						</td>
 					</tr>
 					<tr class="debtors-days">
-						<th><h4><div>Debtors days</div></h4></th>
+						<th><div>Debtors days</div></th>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 
 							<td>
-								<div data-bind="text: 1"></div>
+								<div data-bind="text: roundcut(debtors_days(), 0)"></div>
 							</td>
 <!-- /ko -->
 					</tr>
@@ -128,92 +128,92 @@
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="7"></td>
-						<td data-bind="attr: {colspan: debts_length()}"><h4>Cash Collection</h4>
-						</td>
+						<td class="-no-border" rowspan="7"></td>
+						<th class="-green-t -green-l -green-r" data-bind="attr: {colspan: debts_length()}"><h4>Cash Collection</h4>
+						</th>
 					</tr>
 					<tr>
-						<td colspan="3">Debtors - Current</td>
-						<td class="-no-pad">
+						<td colspan="3" class="-no-border -green-l">Debtors - Current</td>
+						<td class="-no-pad -border">
 							<input type="number" data-bind="value: debtx_000" />
 						</td>
-						<td></td>
+						<td class="-no-border"></td>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 						<!-- ko if: !d.is_actual -->
-							<td>
-								<span data-bind="text: d.debt_000()" ></span>
+							<td class="-border -green-r">
+								<span data-bind="text: roundcut(d.debt_000())" ></span>
 							</td>
 						<!-- /ko -->
 <!-- /ko -->
 					</tr>
 					<tr>
-						<td colspan="3">Debtors - 30 days</td>
-						<td class="-no-pad">
+						<td colspan="3" class="-no-border -green-l">Debtors - 30 days</td>
+						<td class="-no-pad -border">
 							<input type="number" data-bind="value: debtx_030" />
 						</td>
-						<td></td>
+						<td class="-no-border"></td>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 						<!-- ko if: !d.is_actual -->
-							<td>
-								<span data-bind="text: d.debt_030()" ></span>
+							<td class="-border -green-r">
+								<span data-bind="text: roundcut(d.debt_030())" ></span>
 							</td>
 						<!-- /ko -->
 <!-- /ko -->
 					</tr>
 					<tr>
-						<td colspan="3">Debtors - 60 days</td>
-						<td class="-no-pad">
+						<td colspan="3" class="-no-border -green-l">Debtors - 60 days</td>
+						<td class=" -border -no-pad">
 							<input type="number" data-bind="value: debtx_060" />
 						</td>
-						<td></td>
+						<td class="-no-border"></td>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 						<!-- ko if: !d.is_actual -->
-							<td>
-								<span data-bind="text: d.debt_060()" ></span>
+							<td class="-border -green-r">
+								<span data-bind="text: roundcut(d.debt_060())" ></span>
 							</td>
 						<!-- /ko -->
 <!-- /ko -->
 					</tr>
 					<tr>
-						<td colspan="3">Debtors - 90 days</td>
-						<td class="-no-pad">
+						<td colspan="3" class="-no-border -green-l">Debtors - 90 days</td>
+						<td class=" -border -no-pad">
 							<input type="number" data-bind="value: debtx_090" />
 						</td>
-						<td></td>
+						<td class="-no-border"></td>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 						<!-- ko if: !d.is_actual -->
-							<td>
-								<span data-bind="text: d.debt_090()" ></span>
+							<td class="-border -green-r">
+								<span data-bind="text: roundcut(d.debt_090())" ></span>
 							</td>
 						<!-- /ko -->
 <!-- /ko -->
 					</tr>
 					<tr>
-						<td colspan="3">Debtors - 120 days</td>
-						<td class="-no-pad">
+						<td colspan="3" class="-no-border -green-l">Debtors - 120 days</td>
+						<td class="-no-pad -border">
 							<input type="number" data-bind="value: debtx_120" />
 						</td>
-						<td></td>
+						<td class="-no-border"></td>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 						<!-- ko if: !d.is_actual -->
-							<td>
-								<span data-bind="text: d.debt_120()" ></span>
+							<td class="-border -green-r">
+								<span data-bind="text: roundcut(d.debt_120())" ></span>
 							</td>
 						<!-- /ko -->
 <!-- /ko -->
 					</tr>
 
 					<tr>
-						<th colspan="3">Total Receipts</th>
-						<th>
-							<div data-bind="text: debtx_sum() +'%'"></div>
+						<th class="-no-border -green-l -green-b" colspan="3">Total Receipts</th>
+						<th class="-green-b">
+							<div data-bind="text: roundcut(debtx_sum()) +'%'"></div>
 							<div data-bind="visible: debtx_sum() != 100"><span class="label label-danger">&ne; 100%</span></div>
 						</th>
-						<td></td>
+						<td class="-no-border -green-b"></td>
 <!-- ko foreach: { data: debts, as: 'd' } -->
 						<!-- ko if: !d.is_actual -->
-							<th>
-								<span data-bind="text: d.debt_sum()" ></span>
+							<th class="-green-b -border -green-r">
+								<span data-bind="text: roundcut(d.debt_sum())" ></span>
 							</th>
 						<!-- /ko -->
 <!-- /ko -->
