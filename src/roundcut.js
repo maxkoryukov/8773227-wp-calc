@@ -12,3 +12,7 @@ function roundcut (val, count)
 	x = x.toFixed(count);
 	return Number(x);
 };
+
+var global = Function('return this')() || (42, eval)('this');
+
+global.roundcut = roundcut;

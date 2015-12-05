@@ -1,4 +1,4 @@
-function CalcSevenModel04 (v)
+module.exports = function (v)
 {
 	this.business_name = ko.observable(v.business_name);
 
@@ -208,7 +208,7 @@ function CalcSevenModel04 (v)
 	this.positions = v.positions;
 };
 /*------------ SAMPLE ----------------*/
-CalcSevenModel04.getSampleData = function()
+module.exports.getSampleData = function()
 {
 	var data =
 	{

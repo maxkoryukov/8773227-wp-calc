@@ -669,7 +669,7 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-	var data = new CalcSevenModel04( CalcSevenModel04.getSampleData() );
+	var data = new CalcSeven.Model4( CalcSeven.Model4.getSampleData() );
 	ko.applyBindings(data);
 });
 </script>

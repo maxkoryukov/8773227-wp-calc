@@ -231,7 +231,7 @@
 <script type="text/javascript">
 jQuery(document).ready(function()
 {
-	var data = new CalcSevenModel01( CalcSevenModel01.getSampleData() );
+	var data = new CalcSeven.Model1( CalcSeven.Model1.getSampleData() );
 	ko.applyBindings(data);
 });
 </script>

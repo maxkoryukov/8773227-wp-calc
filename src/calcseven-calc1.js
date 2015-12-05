@@ -1,4 +1,5 @@
-function CalcSevenModel01 (v)
+
+module.exports = function Model1 (v)
 {
 	this.business_name = ko.observable(v.business_name);
 
@@ -76,10 +77,11 @@ function CalcSevenModel01 (v)
 		prev = ddo;
 	}
 	}  // debug
+
 };
 
 /*------------ SAMPLE ----------------*/
-CalcSevenModel01.getSampleData = function()
+module.exports.getSampleData = function()
 {
 	var data =
 	{

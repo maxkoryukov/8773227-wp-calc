@@ -64,7 +64,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<?php print($p . "?c=1") ?>">(proc) Calc 1</a></li>
+					<li><a href="<?php print($p . "?c=1") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 1</a></li>
 					<li><a href="<?php print($p . "?c=2") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 2</a></li>
 					<li><a href="<?php print($p . "?c=3") ?>">(not) Calc 3</a></li>
 					<li><a href="<?php print($p . "?c=4") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 4</a></li>
