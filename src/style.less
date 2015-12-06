@@ -1,26 +1,9 @@
 // styles
 
-@import (reference,once, less) "bootstrap-fm/bootstrap-fm.less";
+@import (reference, once, less) "bootstrap-fm/bootstrap-fm.less";
 
 @import ( once, less) "calcseven-calc3.less";
-
-// overriddes:
-
-@brand-primary: #731470; // #BC00BC;
-@headings-color : @brand-primary;
-
-// variables:
-@editable_input_color : #FFF89B;
-@blue-result-color : Blue;
-@trianlge_size : 0.5em;
-
-@blue-color : darken(#428bca, 6.5%);
-@green-color : @brand-success;
-@red-color : @brand-danger;
-@lblue-color : @brand-info;
-@yellow-color : #FFCC00;
-@orange-color: @brand-warning;
-@gray-blue-color : #C6D9F0;
+@import ( reference, once, less) "common.less";
 
 .wpc-calc
 {
@@ -35,7 +18,7 @@
 		{
 			&:not([readonly])
 			{
-				background-color: @editable_input_color;				
+				background-color: @editable_input_color;
 			}
 		}
 	}
@@ -433,60 +416,5 @@
 		{
 			content: ')';
 		}
-	}
-
-/*
-	COLORS
-*/
-	.-color-pair(@col)
-	{
-		.@{col}-bg
-		{
-			@colorname : @col-color;
-			background-color: @colorname;
-		}
-	}
-
-	.-green-bg
-	{
-		background-color: @green-color;
-	}
-	.-green-fg
-	{
-		color: @green-color;
-	}
-
-	.-yellow-bg
-	{
-		background-color: @yellow-color;
-	}
-
-	.-orange-fg
-	{
-		color: @orange-color;
-	}
-	.-blue-bg
-	{
-		background-color: @blue-color;
-	}
-
-	.-blue-fg
-	{
-		color: @blue-color;
-	}
-
-	.-lblue-bg
-	{
-		background-color: @lblue-color;
-	}
-
-	.-red-fg
-	{
-		color: @red-color;
-	}
-
-	.-gray-blue-bg
-	{
-		background-color: @gray-blue-color;
 	}
 }

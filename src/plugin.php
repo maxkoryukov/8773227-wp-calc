@@ -4,7 +4,7 @@
  * Description: Financial calculators for 'CFO On Call' : http://www.cfooncallmembers.com.au/
  * Author: Maksim Koryukov
  * Author URI: https://github.com/maxkoryukov
- * Version: 0.0.8
+ * Version: 0.1.1
  * Plugin URI: https://github.com/maxkoryukov/cfo-on-call-calculator/
  */
 
@@ -14,10 +14,11 @@ function calcseven_register_assets()
 	wp_enqueue_style( 'calcseven', plugins_url('style.min.css', __FILE__ ) , array('twitter-bootstrap') );
 
 	wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js', array(), '1.11.1', true );
-	wp_enqueue_script( 'twitter-bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5', true );
+	wp_enqueue_script( 'twitter-bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), NULL, true );
 	wp_enqueue_script( 'knockout-js', 'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js', array('jquery'), '3.3.0', true );
 	wp_enqueue_script( 'momentjs', 'http://momentjs.com/downloads/moment.min.js', array(), '2.10.6', true );
 
+	wp_enqueue_script( 'knockout-date-bindings', plugins_url('knockout-date-bindings.min.js', __FILE__ ) , array('momentjs', 'knockout-js') );
 	wp_enqueue_script( 'calcseven', plugins_url('cfo-on-call-calcseven.min.js', __FILE__ ) , array('momentjs', 'knockout-js', 'jquery') );
 }
 

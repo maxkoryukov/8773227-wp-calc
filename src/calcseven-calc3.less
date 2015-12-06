@@ -1,3 +1,5 @@
+@import ( reference, once, less) "common.less";
+
 /* *************
 	CALC 3
 ************* */
@@ -6,6 +8,16 @@
 {
 	.form-3
 	{
+		ul.-top-attached
+		{
+			margin-bottom: 0;
+		}
+
+		.nav > li > a
+		{
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		}
 		.tab-content
 		{
 			border-color: @panel-default-border;
@@ -15,7 +27,9 @@
 
 			border-bottom-left-radius: @panel-border-radius;
 			border-bottom-right-radius: @panel-border-radius;
-			padding: @panel-body-padding
+			padding: @panel-body-padding;
+
+
 		}
 
 		.cfo-form-horizontal:extend(.form-horizontal)
@@ -67,6 +81,32 @@
 					.make-sm-column(@input-width-sm);
 				}
 			}
+		}
+	}
+
+	.table-calc3
+	{
+		@violet: { background: @brand-primary; color: white; };
+		@orange: { background: @orange-color; };
+
+		& > thead > tr > th
+		{
+			@violet();
+		}
+
+		.orange
+		{
+			@orange();
+		}
+
+		.violet
+		{
+			@violet();
+		}
+
+		*.-negative-number
+		{
+			 .-red-fg();
 		}
 	}
 }

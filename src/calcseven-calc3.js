@@ -7,6 +7,85 @@ function Model3 (v)
 
 	this.income_recv_debtors_4 = ko.computed(function() { return 0; } , this);
 
+	this.forecast = ko.observableArray();
+	this.forecast_length = ko.computed( function() { return this.forecast().length; }, this);
+
+	var f = {};
+	f.prev = undefined;
+	f.parent = this;
+	var prev = f;
+
+	f.dt = ko.computed(function() { return this.parent.basic_next_payment(); }, f);
+
+	/* broken formulas block */
+	f.sales_cash_received = ko.computed( function() { return Math.random() * 5000; }, f);
+	f.interest_received = ko.computed( function() { return Math.random() * 5000; }, f);
+	f.other_income = ko.computed( function() { return Math.random() * 5000; }, f);
+
+	f.supplier_payments = ko.computed( function() { return Math.random() * 1000; }, f);
+	f.payroll_items = ko.computed( function() { return Math.random() * 1000; }, f);
+	f.overheads = ko.computed( function() { return Math.random() * 3000; }, f);
+	f.fixed_asset_purchases = ko.computed( function() { return Math.random() * 1000; }, f);
+	f.tax_items = ko.computed( function() { return Math.random() * 4000; }, f);
+	f.bank_interest = ko.computed( function() { return Math.random() * 1000; }, f);
+
+	/* broken formulas block */
+	f.total_cash_receipts = ko.computed( function() { return this.sales_cash_received() + this.interest_received() + this.other_income(); }, f);
+	f.total_payments = ko.computed( function()
+		{
+			return this.supplier_payments()
+				+ this.payroll_items()
+				+ this.overheads()
+				+ this.fixed_asset_purchases()
+				+ this.tax_items()
+				+ this.bank_interest();
+		}, f);
+
+	f.bank_balance = ko.computed( function() { return this.parent.basic_bank_balance(); } , f);
+	f.net_receipts_week = ko.computed( function() { return this.total_cash_receipts() - this.total_payments();}, f);
+	f.closing_balance = ko.computed( function() { return this.bank_balance() + this.net_receipts_week();}, f);
+	this.forecast.push(prev);
+
+	for (i = 0; i < 12; i++)
+	{
+		f = {};
+		f.prev = prev;
+		f.parent = this;
+		prev = f;
+
+		f.dt = ko.computed(function(){ return new Date(this.prev.dt().valueOf() + 1000*3600*24*7); }, f);
+
+		/* broken formulas block */
+		f.sales_cash_received = ko.computed( function() { return Math.random() * 5000; }, f);
+		f.interest_received = ko.computed( function() { return Math.random() * 5000; }, f);
+		f.other_income = ko.computed( function() { return Math.random() * 5000; }, f);
+
+		f.supplier_payments = ko.computed( function() { return Math.random() * 1000; }, f);
+		f.payroll_items = ko.computed( function() { return Math.random() * 1000; }, f);
+		f.overheads = ko.computed( function() { return Math.random() * 3000; }, f);
+		f.fixed_asset_purchases = ko.computed( function() { return Math.random() * 1000; }, f);
+		f.tax_items = ko.computed( function() { return Math.random() * 4000; }, f);
+		f.bank_interest = ko.computed( function() { return Math.random() * 1000; }, f);
+
+		f.bank_balance = ko.computed( function() { return this.prev.bank_balance(); } , f);
+		/* broken formulas block */
+
+		f.total_cash_receipts = ko.computed( function() { return this.sales_cash_received() + this.interest_received() + this.other_income(); }, f);
+		f.total_payments = ko.computed( function()
+			{
+				return this.supplier_payments()
+					+ this.payroll_items()
+					+ this.overheads()
+					+ this.fixed_asset_purchases()
+					+ this.tax_items()
+					+ this.bank_interest();
+			}, f);
+		f.net_receipts_week = ko.computed( function() { return this.total_cash_receipts() - this.total_payments();}, f);
+		f.closing_balance = ko.computed( function() { return this.bank_balance() + this.net_receipts_week();}, f);
+
+		this.forecast.push(f);
+	}
+
 /*
 		ddo.is_actual = this.debts().length < 5;
 		if ( typeof(ddo.previous) === 'undefined' )
@@ -145,7 +224,7 @@ Model3.getSampleData = function()
 		other_acc_3:0,
 		other_tax_3:0,
 		other_ass_3:0,
-		
+
 		other_custom_1_name: 'Other 1',
 		other_custom_2_name: 'Other 2',
 		other_custom_3_name: 'Other 3',

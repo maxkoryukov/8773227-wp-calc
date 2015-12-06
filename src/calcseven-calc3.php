@@ -51,7 +51,7 @@ function cfo_gen_input_dmo($kofield, $id_suff, $lbltext)
 		</div>
 		<form class="form form-3">
 
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-tabs nav-justified -top-attached">
 				<li class="active">
 					<a data-toggle="tab" title="Basic Info" href="#tab-basic-information">Basic</a>
 				</li>
@@ -61,7 +61,9 @@ function cfo_gen_input_dmo($kofield, $id_suff, $lbltext)
 				<li><a data-toggle="tab" title="Monthly Overheads" href="#tab-mo-overheads">Overheads</a></li>
 				<li><a data-toggle="tab" href="#tab-other">Other</a></li>
 				<li><a data-toggle="tab" title="Cash Flow Summary" href="#tab-summary">Summary</a></li>
+				<!--
 				<li><a data-toggle="tab" title="Cash Flow Chart" href="#tab-chart">Chart</a></li>
+				-->
 			</ul>
 
 			<div class="tab-content">
@@ -324,16 +326,17 @@ cfo_gen_one_bind_tr("Month&nbsp;3", "supplier_levels_3");
 
 <!-- TABLE 6 -->
 				<div id="tab-other" class="tab-pane fade">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Month 1</th>
-								<th>Month 2</th>
-								<th>Month 3</th>
-							</tr>
-						</thead>
-						<tbody>
+					<div class="cfo-form-horizontal">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Item</th>
+									<th>Month 1</th>
+									<th>Month 2</th>
+									<th>Month 3</th>
+								</tr>
+							</thead>
+							<tbody>
 <?php
 function cfo_gen_four_col_tr($koid, $idsfx, $caption)
 {
@@ -387,27 +390,101 @@ function cfo_gen_four_col_with_name_tr($koid)
 	cfo_gen_four_col_with_name_tr("other_custom_2");
 	cfo_gen_four_col_with_name_tr("other_custom_3");
 ?>
-						</tbody>
-					</table>
+							</tbody>
+						</table>
 
 
+					</div>
 				</div>
 <!-- TABLE 6 -->
 
 
 <!-- TABLE 7 -->
-				<div id="tab-chart" class="tab-pane fade">
-					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<?php
+	function cfo_ko_summary_tr($ko, $title=NULL, $css=NULL, $css2=NULL)
+	{
+?>
+	<tr>
+		<th <?php if (!is_null($css)) echo('class="'.$css.'"'); ?> >
+			<span><?php echo($title) ?></span>
+		</th>
+		<!-- ko foreach: { data: forecast, as: 'f' } -->
+		<td <?php if (!is_null($css2)) echo('class="'.$css2.'"'); ?>>
+			<span data-bind="text: roundcut(f.<?php echo($ko); ?>()), css: {'-negative-number' : f.<?php echo($ko); ?>() < 0 } "></span>
+		</td>
+		<!-- /ko -->
+	</tr>
+<?php
+	}
+?>
+				<div id="tab-summary" class="tab-pane fade">
+					<div class="cfo-form-horizontal">
+						<div class="table-responsive">
+						<table class="table table-calc3 table-striped table-condensed table-hover">
+							<thead>
+								<tr>
+									<th>
+										<span>Cash Flow Summary - Week Ending</span>
+									</th>
+
+									<!-- ko foreach: { data: forecast, as: 'f' } -->
+									<th>
+										<date data-bind="text: moment(f.dt()).format('DD-MMM-YY')"></date>
+									</th>
+									<!-- /ko -->
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Cash Receipts</th>
+									<td data-bind="attr: { colspan : forecast_length() }"></td>
+								</tr>
+
+								<?php cfo_ko_summary_tr('sales_cash_received', 'Sales Cash Received') ?>
+								<?php cfo_ko_summary_tr('interest_received', 'Interest Received') ?>
+								<?php cfo_ko_summary_tr('other_income', 'Other Income') ?>
+
+								<?php cfo_ko_summary_tr('total_cash_receipts', 'Total Cash Receipts', 'orange', 'orange') ?>
+
+								<tr>
+									<th class="violet">Payments</th>
+									<td data-bind="attr: { colspan : forecast_length() }"></td>
+								</tr>
+								<?php cfo_ko_summary_tr('supplier_payments', 'Supplier Payments') ?>
+								<?php cfo_ko_summary_tr('payroll_items', 'Payroll Items') ?>
+								<?php cfo_ko_summary_tr('overheads', 'Overheads') ?>
+								<?php cfo_ko_summary_tr('fixed_asset_purchases', 'Fixed Asset Purchases') ?>
+								<?php cfo_ko_summary_tr('tax_items', 'Tax Items') ?>
+								<?php cfo_ko_summary_tr('bank_interest', 'Bank Interest') ?>
+								<?php cfo_ko_summary_tr('total_payments', 'Total Payments', 'orange', 'orange') ?>
+							</tbody>
+							<tfoot>
+								<?php cfo_ko_summary_tr('bank_balance', 'Opening Bank Balance', 'violet') ?>
+
+								<tr>
+									<th></th>
+									<td data-bind="attr: { colspan : forecast_length() }"></td>
+								</tr>
+
+								<?php cfo_ko_summary_tr('net_receipts_week', 'Net Receipts for week', 'violet') ?>
+
+								<tr>
+									<th></th>
+									<td data-bind="attr: { colspan : forecast_length() }"></td>
+								</tr>
+
+								<?php cfo_ko_summary_tr('closing_balance', 'Closing Balance', 'violet') ?>
+
+							</tfoot>
+						</table>
+						</div>
+					</div>
 				</div>
 <!-- TABLE 7 -->
 
 <!-- TABLE 8 -->
-				<div id="tab-summary" class="tab-pane fade">
-					<p>
-						cfo_gen_input_percent
-						cfo_gen_input_number
-						cfo_gen_input_dmo
-					</p>
+				<div id="tab-chart" class="tab-pane fade">
+					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 				</div>
 <!-- TABLE 8 -->
 			</div>
