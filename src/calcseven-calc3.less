@@ -1,0 +1,66 @@
+/* *************
+	CALC 3
+************* */
+
+.wpc-calc
+{
+	.form-3
+	{
+		.tab-content
+		{
+			border-color: @panel-default-border;
+			border-style: solid;
+			border-width:1px;
+			border-top-style:none;
+
+			border-bottom-left-radius: @panel-border-radius;
+			border-bottom-right-radius: @panel-border-radius;
+			padding: @panel-body-padding
+		}
+
+		.cfo-form-horizontal:extend(.form-horizontal)
+		{
+			@label-width-sm: 6;
+
+			.form-horizontal();
+
+			.cfo-grp:extend(.form-group)
+			{
+				.form-group();
+
+
+				&>label
+				{
+					.make-sm-column(@label-width-sm);
+				}
+				&>div
+				{
+					.make-sm-column(12-@label-width-sm);
+					margin-bottom:0;
+
+					&>input:extend(.form-control)
+					{
+						.form-control();
+
+						&:not([readonly])
+						{
+							background-color: @editable_input_color;
+						}
+					}
+				}
+			}
+
+			.cfo-grp-of-two:extend(.form-group)
+			{
+				.form-group();
+
+				&>div
+				{
+					.make-md-column-offset(@label-width-sm);
+
+					.make-sm-column(12-@label-width-sm);
+				}
+			}
+		}
+	}
+}
