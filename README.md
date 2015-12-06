@@ -30,3 +30,7 @@ Multitabbed calculator for cashflows.
 * **title** - optional header for calculator.
 
 	Default: `NULL`
+
+## Credits
+
+Thanks, **Muhammad Safraz Razik** for bindings: https://github.com/adrotec/knockout-date-bindings
