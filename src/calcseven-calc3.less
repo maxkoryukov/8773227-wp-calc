@@ -20,7 +20,11 @@
 
 		.cfo-form-horizontal:extend(.form-horizontal)
 		{
-			@label-width-sm: 6;
+			@input-width-sm: 5;
+			@input-width-xs: 5;
+
+			@label-width-sm: 12 - @input-width-sm;
+			@label-width-xs: 12 - @input-width-xs;
 
 			.form-horizontal();
 
@@ -32,10 +36,12 @@
 				&>label
 				{
 					.make-sm-column(@label-width-sm);
+					.make-xs-column(@label-width-xs);
 				}
 				&>div
 				{
-					.make-sm-column(12-@label-width-sm);
+					.make-sm-column(@input-width-sm);
+					.make-xs-column(@input-width-xs);
 					margin-bottom:0;
 
 					&>input:extend(.form-control)
@@ -56,9 +62,9 @@
 
 				&>div
 				{
-					.make-md-column-offset(@label-width-sm);
+					.make-sm-column-offset(@label-width-sm);
 
-					.make-sm-column(12-@label-width-sm);
+					.make-sm-column(@input-width-sm);
 				}
 			}
 		}
