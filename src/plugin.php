@@ -2,10 +2,10 @@
 /**
  * Plugin Name: CFO-Calculators
  * Description: Financial calculators for 'CFO On Call' : http://www.cfooncallmembers.com.au/
- * Author: MaxKoryukov
+ * Author: Maksim Koryukov
  * Author URI: https://github.com/maxkoryukov
  * Version: 0.0.8
- * Plugin URI: https://github.com/maxkoryukov/cfo-on-call-calculator
+ * Plugin URI: https://github.com/maxkoryukov/cfo-on-call-calculator/
  */
 
 function calcseven_register_assets()

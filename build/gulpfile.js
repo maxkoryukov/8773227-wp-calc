@@ -26,7 +26,8 @@ gulp.task('clean', function()
 			['../dist/calcseven-plugin/**/*']
 		)
 		.pipe(vinylPaths(d))
-		.pipe(notify({ onLast:true, message: 'CLEAN task complete' }));
+		//.pipe(notify({ onLast:true, message: 'CLEAN task complete' }))
+	;
 });
 
 // Javascript
@@ -40,16 +41,8 @@ gulp.task('js', function()
 		.pipe(source('cfo-on-call-calcseven.min.js'))
 		.pipe(buffer())
 		.pipe(gulp.dest(dest_root))
-		.pipe(notify({ onLast:true, title:'Task JS', message: 'Completed to the : <%= file.relative %>' }))
+		//.pipe(notify({ onLast:true, title:'Task JS', message: 'Completed to the : <%= file.relative %>' }))
 		;
-
-/*
-		.pipe(rename({
-			suffix: '.min',
-			basename: "cfo-on-call-calcseven",
-			extname: ".js"
-		}))
-*/
 });
 
 // Styles
@@ -71,7 +64,8 @@ gulp.task('css', function()
 		//.pipe(csslint.reporter())
 
 		.pipe(gulp.dest(dest_root))
-		.pipe(notify({ onLast:true, message: 'CSS task complete' }));
+		//.pipe(notify({ onLast:true, message: 'CSS task complete' }))
+	;
 });
 
 gulp.task('php', function() {
@@ -82,7 +76,8 @@ gulp.task('php', function() {
 			]
 		)
 		.pipe(gulp.dest(dest_root))
-		.pipe(notify({ onLast:true, message: 'PHP task complete' }));
+		//.pipe(notify({ onLast:true, message: 'PHP task complete' }))
+	;
 });
 
 
@@ -96,7 +91,8 @@ gulp.task('docs', ['docs:markdown'], function()
 			, {base: '../'}
 		)
 		.pipe(gulp.dest(dest_root))
-		.pipe(notify({ onLast:true, message: 'DOCS task complete' }));
+		//.pipe(notify({ onLast:true, message: 'DOCS task complete' }))
+	;
 });
 gulp.task('docs:markdown', function()
 {

@@ -1,13 +1,12 @@
 {
 	"name": "calcseven",
-	"version": "0.0.2",
+	"version": "0.0.7",
 	"description": "fill from http://browsenpm.org/package.json",
 	"devDependencies": {
 		"browserify": "^12.0.1",
 		"del": "*",
 		"gulp": "*",
 		"gulp-autoprefixer": "*",
-		"gulp-browserify-globs": "^0.1.2",
 		"gulp-csslint": "*",
 		"gulp-csso": "*",
 		"gulp-less": "*",

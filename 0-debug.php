@@ -88,6 +88,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 	<script src="http://momentjs.com/downloads/moment.min.js" type="text/javascript"></script>
+	<script src="/src/knockout-date-bindings.js"></script>
 
 	<main class="container">
 <?php
@@ -98,7 +99,12 @@
 ?>
 
 	</main>
+
+	<script type="text/javascript">
+		CalcSeven = window;
+	</script>
 	<script type="text/javascript" src="src/calcseven-calc4.js"></script>
+	<script type="text/javascript" src="src/calcseven-calc3.js"></script>
 	<script type="text/javascript" src="src/calcseven-calc1.js"></script>
 	<script type="text/javascript" src="src/roundcut.js"></script>
 </body>
