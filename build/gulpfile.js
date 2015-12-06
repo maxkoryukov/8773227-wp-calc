@@ -31,7 +31,25 @@ gulp.task('clean', function()
 });
 
 // Javascript
-gulp.task('js', function()
+gulp.task('js', ['js:bundle', 'js:minify-extra'], function()
+{
+	return;
+});
+
+gulp.task('js:minify-extra', function()
+{
+	return gulp.src(
+			[
+				'../src/knockout-date-bindings.js',
+			]
+		)
+		.pipe(rename({suffix: '.min' }))
+		.pipe(uglify())
+		.pipe(gulp.dest(dest_root))
+		;
+});
+
+gulp.task('js:bundle', function()
 {
 	var b = browserify({
 		entries: '../src/browserify.bundle.js',
@@ -40,6 +58,7 @@ gulp.task('js', function()
 	return b.bundle()
 		.pipe(source('cfo-on-call-calcseven.min.js'))
 		.pipe(buffer())
+		.pipe(uglify())
 		.pipe(gulp.dest(dest_root))
 		//.pipe(notify({ onLast:true, title:'Task JS', message: 'Completed to the : <%= file.relative %>' }))
 		;
@@ -50,7 +69,7 @@ gulp.task('css', function()
 {
 	return gulp.src(
 			[
-				'../src/*.less',
+				'../src/style.less',
 			]
 		)
 		.pipe(less())
