@@ -1,7 +1,8 @@
 // styles
 
-
 @import (reference,once, less) "bootstrap-fm/bootstrap-fm.less";
+
+@import ( once, less) "calcseven-calc3.less";
 
 // overriddes:
 
@@ -28,9 +29,15 @@
 		color : @headings-color;
 	}
 
-	.form input:not([readonly])
+	.form
 	{
-		background-color: @editable_input_color;
+		input,select
+		{
+			&:not([readonly])
+			{
+				background-color: @editable_input_color;				
+			}
+		}
 	}
 
 	.wpc-blue-marked-result
