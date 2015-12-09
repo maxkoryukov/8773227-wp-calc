@@ -47,7 +47,7 @@
 	.field
 	{
 		//.make-lg-column(6);
-		width : 10em;
+		//width : 10em;
 	}
 
 	.panel-howtouse
@@ -93,11 +93,10 @@
 		padding-right : 2px;
 	}
 
-	.wpc-input-group
+	.wpc-input-group:extend(.input-group)
 	{
 		.input-group();
-		//.make-lg-column(1);
-		//.make-xs-column(3);
+		//.input-group-sm();
 
 		padding-right: 0;
 		padding-left: 0;
@@ -107,10 +106,10 @@
 		{
 			float: none;
 		}
-
 		input:extend( .form-control )
 		{
-			color: inherit;
+			.form-control();
+			color: red;
 
 			&:first-child
 			{
@@ -128,7 +127,7 @@
 			//();
 		}
 
-		span
+		span:extend(.input-group-addon)
 		{
 			.input-group-addon();
 

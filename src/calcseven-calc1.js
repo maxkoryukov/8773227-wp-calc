@@ -28,7 +28,6 @@ module.exports = function Model1 (v)
 	this.debts_length = ko.computed( function() { return this.debts().length; }, this);
 
 	var prev = undefined;
-	for (asdf in [0,1,2,3,4,5]) {  // debug
 	for (di in v.debts)
 	{
 		var dd = v.debts[di];
@@ -76,8 +75,6 @@ module.exports = function Model1 (v)
 		this.debts.push(ddo);
 		prev = ddo;
 	}
-	}  // debug
-
 };
 
 /*------------ SAMPLE ----------------*/
@@ -126,6 +123,55 @@ module.exports.getSampleData = function()
 				closing : 42000,
 			},
 
+			// forecast:
+			{
+				dt : new Date(2014, 06, 1),
+				revenue: 25000,
+			},
+			{
+				dt : new Date(2014, 07, 1),
+				revenue: 26000,
+			},
+			{
+				dt : new Date(2014, 08, 1),
+				revenue: 27000,
+			},
+			{
+				dt : new Date(2014, 09, 1),
+				revenue: 28000,
+			},
+			{
+				dt : new Date(2014, 10, 1),
+				revenue: 30000,
+			},
+			{
+				dt : new Date(2014, 11, 1),
+				revenue: 31000,
+			},
+			{
+				dt : new Date(2014, 12, 1),
+				revenue: 25000,
+			},
+			{
+				dt : new Date(2015, 01, 1),
+				revenue: 25000,
+			},
+			{
+				dt : new Date(2015, 02, 1),
+				revenue: 27000,
+			},
+			{
+				dt : new Date(2015, 03, 1),
+				revenue: 30000,
+			},
+			{
+				dt : new Date(2015, 04, 1),
+				revenue: 35000,
+			},
+			{
+				dt : new Date(2015, 05, 1),
+				revenue: 32000,
+			},
 
 		],
 	};

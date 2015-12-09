@@ -179,17 +179,13 @@
 					<tr>
 						<th class="wpc-blue-marked-result">Number of&nbsp;Sales required to&nbsp;Breakeven</th>
 						<td>
-							<div class="field">
-								<div class="wpc-input-group  wpc-blue-marked-result">
-									<input type="number" readonly="readonly" data-bind="value: number_be_a()"/>
-								</div>
+							<div class="field  wpc-blue-marked-result">
+								<input type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_be_a()"/>
 							</div>
 						</td>
 						<td>
 							<div class="field">
-								<div class="wpc-input-group wpc-blue-marked-result">
-									<input type="number" readonly="readonly" data-bind="value: number_be_m()"/>
-								</div>
+								<input type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_be_m()"/>
 							</div>
 						</td>
 
@@ -249,16 +245,12 @@
 						<th class="wpc-blue-marked-result">Number of Sales required to achieve Target Profit</th>
 						<td>
 							<div class="field">
-								<div class="wpc-input-group  wpc-blue-marked-result">
-									<input type="number" readonly="readonly" data-bind="value: number_tp_a()"/>
-								</div>
+								<input type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_tp_a()"/>
 							</div>
 						</td>
 						<td>
 							<div class="field">
-								<div class="wpc-input-group wpc-blue-marked-result">
-									<input type="number" readonly="readonly" data-bind="value: number_tp_m()"/>
-								</div>
+								<input type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_tp_m()"/>
 							</div>
 						</td>
 						<!--whitespace-->

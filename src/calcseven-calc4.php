@@ -403,7 +403,7 @@
 						</td>
 						<td></td>
 						<td>
-							<div class="field">
+							<div>
 								<label class="wpc-label-d red" for="id-0uwSTcmgXGAiL9xIHQhV_x1">Adjusted Profit</label>
 								<div data-bind="text: roundcut(profit_after_interest_impact(), 3)"></div>
 							</div>

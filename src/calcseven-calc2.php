@@ -7,6 +7,9 @@
 		</div>
 		<form class="form">
 
+			<div>
+
+			</div>
 		<div class="table-responsive"><table class=" table-calc2"><tbody>
 			<tr>
 				<th><label for="id-Wo1y5OxzpCi2ANZ7J3eF">Business Name</label></th>
@@ -104,7 +107,7 @@
 							Cost of Sales&nbsp;%
 						</div>
 						<div class="wpc-input-group">
-							<input type="number" readonly="readonly" data-bind="value: cost_sales()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(cost_sales())"/>
 							<span>%</span>
 						</div>
 					</div>
@@ -126,7 +129,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: cost_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(cost_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -134,7 +137,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: cost_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(cost_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -164,7 +167,7 @@
 							Cost of Sales&nbsp;%
 						</div>
 						<div class="wpc-input-group">
-							<input type="number" readonly="readonly" data-bind="value: overheads_sales()" aria-describedby="id-qXMkcKpNCsSBRTh8yZza" />
+							<input type="number" readonly="readonly" data-bind="value: roundcut(overheads_sales())" aria-describedby="id-qXMkcKpNCsSBRTh8yZza" />
 							<span>%</span>
 						</div>
 					</div>
@@ -186,7 +189,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: overheads_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(overheads_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -194,7 +197,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: overheads_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(overheads_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -222,7 +225,7 @@
 				<td>
 					<div class="field">
 						<label class="wpc-label-d blue" for="id-YDnVoS7tR6vjgQ94wPJK">Accnts Rec&nbsp;Days</label>
-						<input type="number" class="form-control" readonly="readonly" data-bind="value: account_days()" id="id-YDnVoS7tR6vjgQ94wPJK" />
+						<input type="number" class="form-control" readonly="readonly" data-bind="value: roundcut(account_days())" id="id-YDnVoS7tR6vjgQ94wPJK" />
 					</div>
 				</td>
 				<td>
@@ -237,7 +240,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: account_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(account_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -245,7 +248,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: account_profit()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(account_profit())"/>
 						</div>
 					</div>
 				</td>
@@ -273,7 +276,7 @@
 				<td>
 					<div class="field">
 						<label class="wpc-label-d red" for="id-FpNCdDGc8ZPfW0m1yn6U">Inventory or&nbsp;WIP Days</label>
-						<input type="number" class="form-control" readonly="readonly" data-bind="value: inventory_calc2()" id="id-FpNCdDGc8ZPfW0m1yn6U" />
+						<input type="number" class="form-control" readonly="readonly" data-bind="value: roundcut(inventory_calc2())" id="id-FpNCdDGc8ZPfW0m1yn6U" />
 					</div>
 				</td>
 				<td>
@@ -288,7 +291,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: inventory_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(inventory_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -296,7 +299,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: inventory_profit()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(inventory_profit())"/>
 						</div>
 					</div>
 				</td>
@@ -339,7 +342,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: price_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(price_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -347,7 +350,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: price_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(price_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -375,7 +378,7 @@
 				<td>
 					<div class="field">
 						<label class="wpc-label-d" for="id-Dmf0y86nKAETeGQIR5Uv">Accnts Pay&nbsp;Days</label>
-						<input type="number" class="form-control" readonly="readonly" data-bind="value: acc_calc2()" id="id-Dmf0y86nKAETeGQIR5Uv" />
+						<input type="number" class="form-control" readonly="readonly" data-bind="value: roundcut(acc_calc2())" id="id-Dmf0y86nKAETeGQIR5Uv" />
 					</div>
 				</td>
 				<td>
@@ -390,7 +393,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: acc_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(acc_cashflow())"/>
 						</div>
 					</div>
 				</td>
@@ -398,7 +401,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: acc_profit()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(acc_profit())"/>
 						</div>
 					</div>
 				</td>
@@ -420,7 +423,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: total_cashflow()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(total_cashflow())"/>
 						</div>
 					</div>
 				</th>
@@ -428,7 +431,7 @@
 					<div class="field">
 						<div class="wpc-input-group">
 							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: total_profit()"/>
+							<input type="number" readonly="readonly" data-bind="value: roundcut(total_profit())"/>
 						</div>
 					</div>
 				</th>
