@@ -1,3 +1,46 @@
+<?php
+function input_with_sym($data_field, $charpre, $charpost, $ro, $id = NULL, $label = NULL, $label_css = NULL)
+{
+	if (NULL != $label)
+	{
+		$idf = ($id)? ' for="id-'.$id.'"' : '';
+		$label_css = $label_css ? ' ' . $label_css : '';
+
+		echo '<label class="wpc-label-d'. $label_css.'"'. $idf . '>'. $label . '</label>';
+	}
+	echo '<div class="field">';
+
+	$grouped = (!! $charpre) || (!! $charpost) ;
+
+	if ($grouped)
+	{
+		echo '<div class="wpc-input-group">';
+	}
+
+	if (NULL != $charpre)
+	{
+		echo '<span>' . $charpre . '</span>' ;
+	}
+	
+	$rr = ( $ro ) ? ' readonly="readonly"' : '';
+	$idi = ($id) ? ' id="'.$id. '"' : '';
+	$data_field = ( $ro ) ? 'roundcut(' . $data_field . '())' : $data_field;
+	
+	echo '<input type="number" class="form-control"'. $rr .	' data-bind="value: ' . $data_field . '"' . $idi . '/>';
+
+	if (NULL != $charpost)
+	{
+		echo '<span>' . $charpost . '</span>' ;
+	}
+
+	if ($grouped)
+	{
+		echo '</div>';
+	}
+	
+	echo '</div>';
+}
+?>
 <article class="wpc-calc">
 	<section>
 		<h2>7 Key Numbers - Goal Seek Calculator</h2>
@@ -24,7 +67,7 @@
 				<td>
 					<div class="field">
 						<div class="wpc-input-group">
-							<input type="number" data-bind="value: finance_rate" id="id-mZSyX5k3ObBFehqxQ1YC" />
+							<input type="number" class="form-control" data-bind="value: finance_rate" id="id-mZSyX5k3ObBFehqxQ1YC" />
 							<span>%</span>
 						</div>
 					</div>
@@ -34,52 +77,30 @@
 
 			<tr class="header">
 				<th></th>
-				<th>Current Number</th>
+				<th><span>Current Number</span></th>
 				<th></th>
-				<th>Adjustment</th>
-				<th>Cashflow Change</th>
-				<th>Profit Change</th>
-				<th>Calculation Explanation</th>
+				<th><span>Adjustment</span></th>
+				<th><span>Cashflow Change</span></th>
+				<th><span>Profit Change</span></th>
+				<th><span>Calculation Explanation</span></th>
 			</tr>
 
 			<tr>
 				<th>Sales (Revenue Growth)</th>
 				<td>
-					<div class="field">
-						<div class="wpc-label-d" id="id-0uwSTcmgXGAiL9xIHQhV">Sales</div>
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" data-bind="value: sales_1" aria-describedby="id-0uwSTcmgXGAiL9xIHQhV"/>
-						</div>
-					</div>
+					<?php input_with_sym("sales_1", "$", NULL, 0, '0uwSTcmgXGAiL9xIHQhV', 'Sales', NULL) ?>
 				</td>
 				<td></td>
 				<td>
-					<div class="field">
-						<div class="wpc-label-d" id="id-0tiaKvrHRC7YQ3VB4bme">%&nbsp;Change</div>
-						<div class="wpc-input-group">
-							<input type="number" data-bind="value: sales_3" aria-describedby="id-0tiaKvrHRC7YQ3VB4bme"/>
-							<span>%</span>
-						</div>
-					</div>
+					<?php input_with_sym("sales_3", NULL, '%', 0, 'x0tiaKvrHRC7YQ3VB4bme', '%&nbsp;Change', NULL) ?>
 				</td>
 				<!--whitespace-->
 
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: sales_cashflow()"/>
-						</div>
-					</div>
+					<?php input_with_sym("sales_cashflow", "$", NULL, 1) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: sales_cashflow()"/>
-						</div>
-					</div>
+					<?php input_with_sym("sales_cashflow", "$", NULL, 1) ?>
 				</td>
 
 				<td class="five wide">
@@ -93,53 +114,21 @@
 			<tr>
 				<th>Cost of Goods Sold</th>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-NP3sFQa7hTxXdjiRzS0B">Direct Costs</label>
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" data-bind="value: cost_1" id="id-NP3sFQa7hTxXdjiRzS0B"/>
-						</div>
-					</div>
+					<?php input_with_sym("cost_1", '$', NULL, 0, 'NP3sFQa7hTxXdjiRzS0B', 'Direct Costs', NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-label-d green">
-							Cost of Sales&nbsp;%
-						</div>
-						<div class="wpc-input-group">
-							<input type="number" readonly="readonly" data-bind="value: roundcut(cost_sales())"/>
-							<span>%</span>
-						</div>
-					</div>
+					<?php input_with_sym("cost_sales", NULL, '%', 1, NULL, 'Cost of Sales&nbsp;%', 'green') ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-label-d green">
-							Change in COS&nbsp;%
-						</div>
-						<div class="wpc-input-group">
-							<input type="number" data-bind="value: cost_3"/>
-							<span>%</span>
-						</div>
-					</div>
+					<?php input_with_sym("cost_3", NULL, '%' , 0, 'xNP3sFQa7hTxXdjiRzS0B', 'Change in COS&nbsp;%', 'green') ?>
 				</td>
 				<!--whitespace-->
 
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(cost_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("cost_cashflow", '$', NULL , 1, NULL, NULL, NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(cost_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("cost_cashflow", '$', NULL , 1, NULL, NULL, NULL) ?>
 				</td>
 
 				<td>
@@ -153,53 +142,21 @@
 			<tr>
 				<th>Overheads</th>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d lblue" for="id-ljG1ZtJ5kQTdmoRCfpcK">Overheads</label>
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" data-bind="value: overheads_1" id="id-ljG1ZtJ5kQTdmoRCfpcK"/>
-						</div>
-					</div>
+					<?php input_with_sym("overheads_1", '$', NULL, 0, 'ljG1ZtJ5kQTdmoRCfpcK', 'Overheads', 'lblue') ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-label-d" id="id-qXMkcKpNCsSBRTh8yZza">
-							Cost of Sales&nbsp;%
-						</div>
-						<div class="wpc-input-group">
-							<input type="number" readonly="readonly" data-bind="value: roundcut(overheads_sales())" aria-describedby="id-qXMkcKpNCsSBRTh8yZza" />
-							<span>%</span>
-						</div>
-					</div>
+					<?php input_with_sym("overheads_sales", NULL, '%', 1, 'qXMkcKpNCsSBRTh8yZza', 'Cost of Sales&nbsp;%', NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-label-d lblue" id="id-73VYGXPh9Zqd0jt56ary">
-							%&nbsp;Change of&nbsp;O/H&nbsp;$
-						</div>
-						<div class="wpc-input-group">
-							<input type="number" data-bind="value: overheads_3" aria-describedby="id-73VYGXPh9Zqd0jt56ary" />
-							<span>%</span>
-						</div>
-					</div>
+					<?php input_with_sym("overheads_3", NULL, '%', 0, '73VYGXPh9Zqd0jt56ary', '%&nbsp;Change of&nbsp;O/H&nbsp;$', 'lblue') ?>
 				</td>
 				<!--whitespace-->
 
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(overheads_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("overheads_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(overheads_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("overheads_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 
 				<td>
@@ -214,43 +171,21 @@
 			<tr>
 				<th>Accounts Collections</th>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-jKIlfc2i9wJCToLSzvgP">Accnts Rec&nbsp;$</label>
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" data-bind="value: account_1" id="id-jKIlfc2i9wJCToLSzvgP"/>
-						</div>
-					</div>
+					<?php input_with_sym("account_1", '$', NULL, 0, 'jKIlfc2i9wJCToLSzvgP', 'Accnts Rec&nbsp;$', NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d blue" for="id-YDnVoS7tR6vjgQ94wPJK">Accnts Rec&nbsp;Days</label>
-						<input type="number" class="form-control" readonly="readonly" data-bind="value: roundcut(account_days())" id="id-YDnVoS7tR6vjgQ94wPJK" />
-					</div>
+					<?php input_with_sym("account_days", NULL, NULL, 1, 'YDnVoS7tR6vjgQ94wPJK', 'Accnts Rec&nbsp;Days', 'blue') ?>
 				</td>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d blue" for="id-Fy5w3x4fJ7Oa6UDsok1K">Change in&nbsp;Accnts Rec&nbsp;Days</label>
-						<input type="number" class="form-control" data-bind="value: account_3" id="id-Fy5w3x4fJ7Oa6UDsok1K" />
-					</div>
+					<?php input_with_sym("account_3", NULL, NULL, 0, 'Fy5w3x4fJ7Oa6UDsok1K', 'Change in&nbsp;Accnts Rec&nbsp;Days', 'blue') ?>
 				</td>
 				<!--whitespace-->
 
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(account_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("account_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(account_profit())"/>
-						</div>
-					</div>
+					<?php input_with_sym("account_profit", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 
 				<td>
@@ -265,43 +200,21 @@
 			<tr>
 				<th>Inventory or WIP</th>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-9R4WdVANEGejTHnDCufL">Inventory or&nbsp;WIP&nbsp;$</label>
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" data-bind="value: inventory_1" id="id-9R4WdVANEGejTHnDCufL"/>
-						</div>
-					</div>
+					<?php input_with_sym("inventory_1", '$', NULL, 0, '9R4WdVANEGejTHnDCufL', 'Inventory or&nbsp;WIP&nbsp;$', NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d red" for="id-FpNCdDGc8ZPfW0m1yn6U">Inventory or&nbsp;WIP Days</label>
-						<input type="number" class="form-control" readonly="readonly" data-bind="value: roundcut(inventory_calc2())" id="id-FpNCdDGc8ZPfW0m1yn6U" />
-					</div>
+					<?php input_with_sym("inventory_calc2", NULL , NULL, 1, 'FpNCdDGc8ZPfW0m1yn6U', 'Inventory or&nbsp;WIP Days', 'red') ?>
 				</td>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d red" for="id-ILJj0ECFN59HGPmOhvVD">Change in&nbsp;Days</label>
-						<input type="number" class="form-control" data-bind="value: inventory_3" id="id-ILJj0ECFN59HGPmOhvVD" />
-					</div>
+					<?php input_with_sym("inventory_3", NULL , NULL, 0, 'ILJj0ECFN59HGPmOhvVD', 'Change in&nbsp;Days', 'red') ?>
 				</td>
 				<!--whitespace-->
 
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(inventory_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("inventory_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(inventory_profit())"/>
-						</div>
-					</div>
+					<?php input_with_sym("inventory_profit", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 
 				<td>
@@ -316,43 +229,21 @@
 			<tr>
 				<th>Price Change</th>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-yhgw0xXRj1p5kHUFVcZ3">Sales</label>
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: sales_1()" id="id-yhgw0xXRj1p5kHUFVcZ3"/>
-						</div>
-					</div>
+					<?php input_with_sym("sales_1", '$', NULL, 1, 'yhgw0xXRj1p5kHUFVcZ3', 'Sales', NULL) ?>
 				</td>
 
 				<td></td>
 
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-tKRCAZ3IY6210fcBvpez">%&nbsp;Price Change</label>
-						<div class="wpc-input-group">
-							<input type="number" data-bind="value: price_3" id="id-tKRCAZ3IY6210fcBvpez" />
-							<span>%</span>
-						</div>
-					</div>
+					<?php input_with_sym("price_3", NULL , '%', 0, 'tKRCAZ3IY6210fcBvpez', '%&nbsp;Price Change', NULL) ?>
 				</td>
 				<!--whitespace-->
 
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(price_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("price_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(price_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("price_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 
 				<td>
@@ -367,43 +258,21 @@
 			<tr>
 				<th>Accounts Payable</th>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-ADX9LGTvkPNt5mzHpW8a">Accnts Pay&nbsp;$</label>
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" data-bind="value: acc_1" id="id-ADX9LGTvkPNt5mzHpW8a"/>
-						</div>
-					</div>
+					<?php input_with_sym("acc_1", '$', NULL, 0, 'ADX9LGTvkPNt5mzHpW8a', 'Accnts Pay&nbsp;$', NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-Dmf0y86nKAETeGQIR5Uv">Accnts Pay&nbsp;Days</label>
-						<input type="number" class="form-control" readonly="readonly" data-bind="value: roundcut(acc_calc2())" id="id-Dmf0y86nKAETeGQIR5Uv" />
-					</div>
+					<?php input_with_sym("acc_calc2", NULL , NULL, 1, 'Dmf0y86nKAETeGQIR5Uv', 'Accnts Pay&nbsp;Days', NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<label class="wpc-label-d" for="id-2e8amrHFOkQ0UsZI3uxn">Change in&nbsp;Accnts Days</label>
-						<input type="number" class="form-control" data-bind="value: acc_3" id="id-2e8amrHFOkQ0UsZI3uxn" />
-					</div>
+					<?php input_with_sym("acc_3", NULL , NULL, 0, '2e8amrHFOkQ0UsZI3uxn', 'Change in&nbsp;Accnts Days', NULL) ?>
 				</td>
 				<!--whitespace-->
 
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(acc_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("acc_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 				<td>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(acc_profit())"/>
-						</div>
-					</div>
+					<?php input_with_sym("acc_profit", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</td>
 
 				<td>
@@ -420,20 +289,10 @@
 				<!--whitespace-->
 
 				<th>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(total_cashflow())"/>
-						</div>
-					</div>
+					<?php input_with_sym("total_cashflow", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</th>
 				<th>
-					<div class="field">
-						<div class="wpc-input-group">
-							<span>$</span>
-							<input type="number" readonly="readonly" data-bind="value: roundcut(total_profit())"/>
-						</div>
-					</div>
+					<?php input_with_sym("total_profit", '$', NULL, 1, NULL, NULL,  NULL) ?>
 				</th>
 
 				<td></td>
@@ -462,7 +321,7 @@ jQuery(document).ready(function()
 		overheads_1 : 298180,
 		overheads_3 : -6,
 
-		account_1 : 916050,
+		account_1 : 0.1,
 		account_3 : -11.9295,
 
 		inventory_1 : 80000,
@@ -488,19 +347,19 @@ jQuery(document).ready(function()
 		this.overheads_sales = ko.computed(function() { return this.overheads_1() * 100 / this.sales_1(); }, this);
 		this.overheads_cashflow = ko.computed(function() { return -this.overheads_1() * this.overheads_3() * (this.finance_rate() + 100) / 10000; }, this);
 
-		this.account_days = ko.computed(function() { return this.account_1() / ( this.sales_1() / 365 ) ; }, this);
-		this.account_cashflow = ko.computed(function() { return -(( this.account_days() + this.account_3() ) * (this.sales_1() / 365) - this.account_1()) * (this.finance_rate() + 100) / 100; }, this );
-		this.account_profit   = ko.computed(function() { return -(( this.account_days() + this.account_3() ) * (this.sales_1() / 365) - this.account_1()) * (this.finance_rate()) / 100; }, this );
+		this.account_days = ko.computed(function() { return this.account_1() / ( 1.0 * this.sales_1() / 365.0 ) ; }, this);
+		this.account_cashflow = ko.computed(function() { return -1.0 * (( this.account_days() + Number(this.account_3()) ) * (1.0 * this.sales_1() / 365.0) - this.account_1()) * (this.finance_rate() + 100) / 100; }, this );
+		this.account_profit   = ko.computed(function() { return -1.0 * (( this.account_days() + Number(this.account_3()) ) * (this.sales_1() / 365.0) - this.account_1()) * (this.finance_rate()) / 100; }, this );
 
-		this.inventory_calc2 = ko.computed(function() { return this.inventory_1() / ( this.cost_1() / 365 ) ; }, this);
-		this.inventory_cashflow = ko.computed(function() { return -(( this.inventory_calc2() + this.inventory_3() ) * (this.cost_1() / 365) - this.inventory_1()) * (this.finance_rate() + 100) / 100; }, this );
-		this.inventory_profit   = ko.computed(function() { return -(( this.inventory_calc2() + this.inventory_3() ) * (this.cost_1() / 365) - this.inventory_1()) * (this.finance_rate()) / 100; }, this );
+		this.inventory_calc2 = ko.computed(function() { return this.inventory_1() / ( this.cost_1() / 365.0 ) ; }, this);
+		this.inventory_cashflow = ko.computed(function() { return -(( this.inventory_calc2() + Number(this.inventory_3()) ) * (this.cost_1() / 365.0) - this.inventory_1()) * (this.finance_rate() + 100) / 100; }, this );
+		this.inventory_profit   = ko.computed(function() { return -(( this.inventory_calc2() + Number(this.inventory_3()) ) * (this.cost_1() / 365.0) - this.inventory_1()) * (this.finance_rate()) / 100; }, this );
 
 		this.price_cashflow = ko.computed(function() { return ( this.sales_1() * this.price_3()) * (this.finance_rate() + 100) / 10000; }, this );
 
-		this.acc_calc2 = ko.computed(function() { return this.acc_1() / ( this.cost_1() / 365 ) ; }, this);
-		this.acc_cashflow = ko.computed(function() { return (( this.acc_calc2() + this.acc_3() ) * (this.cost_1() / 365) - this.acc_1()) * (this.finance_rate() + 100) / 100; }, this );
-		this.acc_profit   = ko.computed(function() { return (( this.acc_calc2() + this.acc_3() ) * (this.cost_1() / 365) - this.acc_1()) * (this.finance_rate()) / 100; }, this );
+		this.acc_calc2 = ko.computed(function() { return Number(this.acc_1()) / ( this.cost_1() / 365.0 ) ; }, this);
+		this.acc_cashflow = ko.computed(function() { return (( this.acc_calc2() + Number(this.acc_3()) ) * (this.cost_1() / 365.0) - Number(this.acc_1())) * (this.finance_rate() + 100) / 100; }, this );
+		this.acc_profit   = ko.computed(function() { return (( this.acc_calc2() + Number(this.acc_3()) ) * (this.cost_1() / 365.0) - Number(this.acc_1())) * (this.finance_rate()) / 100; }, this );
 
 		this.total_cashflow = ko.computed(function() { return this.sales_cashflow() + this.cost_cashflow() + this.overheads_cashflow() + this.account_cashflow() + this.inventory_cashflow() + this.price_cashflow() + this.acc_cashflow(); }, this);
 		this.total_profit = ko.computed(function() { return this.sales_cashflow() + this.cost_cashflow() + this.overheads_cashflow() + this.account_profit() + this.inventory_profit() + this.price_cashflow() + this.acc_profit(); }, this);

@@ -4,7 +4,7 @@
  * Description: Financial calculators for 'CFO On Call' : http://www.cfooncallmembers.com.au/
  * Author: Maksim Koryukov
  * Author URI: https://github.com/maxkoryukov
- * Version: 0.1.2
+ * Version: 0.2.0
  * Plugin URI: https://github.com/maxkoryukov/cfo-on-call-calculator/
  */
 

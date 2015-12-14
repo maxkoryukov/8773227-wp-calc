@@ -6,8 +6,8 @@
 			<div class="panel-heading"><h4><i class="glyphicon glyphicon-info-sign"></i> How to use</h4></div>
 			<div class="panel-body">
 				<p class="explanation">
-					Fill in the details required in the <span class="wpc-howtouse-input-label">Yellow Highlighted Areas</span> - The results will then appear in Blue for <q class="wpc-blue-marked-result">Sales required to Breakeven</q>,
-					<q class="wpc-blue-marked-result">Number of Sales required to Breakeven</q>, and <q class="wpc-blue-marked-result">Number of Sales required to Reach Target Profit</q>
+					Fill in the details required in the <span class="wpc-howtouse-input-label">Yellow Highlighted Areas</span> - The results will then appear in Blue for <code class="wpc-blue-marked-result">Sales required to Breakeven</code>,
+					<code class="wpc-blue-marked-result">Number of Sales required to Breakeven</code>, and <code class="wpc-blue-marked-result">Number of Sales required to Reach Target Profit</code>
 				</p>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" data-bind="value: cost_a"/>
+									<input type="number" class="form-control" data-bind="value: cost_a"/>
 								</div>
 							</div>
 						</td>
@@ -49,7 +49,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" readonly="readonly" data-bind="value: cost_m()"/>
+									<input type="number" class="form-control" readonly="readonly" data-bind="value: cost_m()"/>
 								</div>
 							</div>
 						</td>
@@ -68,7 +68,7 @@
 						<td>
 							<div class="field">
 								<div class="wpc-input-group">
-									<input type="number" data-bind="value: gprofit_a"/>
+									<input class="form-control" type="number" data-bind="value: gprofit_a"/>
 									<span>%</span>
 								</div>
 							</div>
@@ -76,7 +76,7 @@
 						<td>
 							<div class="field">
 								<div class="wpc-input-group">
-									<input type="number" readonly="readonly" data-bind="value: gprofit_a()"/>
+									<input class="form-control" type="number" readonly="readonly" data-bind="value: gprofit_a()"/>
 									<span>%</span>
 								</div>
 							</div>
@@ -92,7 +92,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" data-bind="value: sales"/>
+									<input class="form-control" type="number" data-bind="value: sales"/>
 								</div>
 							</div>
 						</td>
@@ -106,7 +106,7 @@
 							<div class="field">
 								<div class="wpc-input-group  wpc-blue-marked-result">
 									<span>$</span>
-									<input type="number" readonly="readonly" data-bind="value: sales_be_a()"/>
+									<input class="form-control" type="number" readonly="readonly" data-bind="value: sales_be_a()"/>
 								</div>
 							</div>
 						</td>
@@ -114,7 +114,7 @@
 							<div class="field">
 								<div class="wpc-input-group wpc-blue-marked-result">
 									<span>$</span>
-									<input type="number" readonly="readonly" data-bind="value: sales_be_m()"/>
+									<input class="form-control" type="number" readonly="readonly" data-bind="value: sales_be_m()"/>
 								</div>
 							</div>
 						</td>
@@ -127,7 +127,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" data-bind="value: cost_of_sales"/>
+									<input class="form-control" type="number" data-bind="value: cost_of_sales"/>
 								</div>
 							</div>
 						</td>
@@ -146,7 +146,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" data-bind="value: avg_sale"/>
+									<input class="form-control" type="number" data-bind="value: avg_sale"/>
 								</div>
 							</div>
 						</td>
@@ -154,7 +154,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" readonly="readonly" data-bind="value: avg_sale()"/>
+									<input class="form-control" type="number" readonly="readonly" data-bind="value: avg_sale()"/>
 								</div>
 							</div>
 						</td>
@@ -167,7 +167,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" readonly="readonly" data-bind="value: gross_profit()"/>
+									<input class="form-control" type="number" readonly="readonly" data-bind="value: gross_profit()"/>
 								</div>
 							</div>
 						</td>
@@ -180,12 +180,12 @@
 						<th class="wpc-blue-marked-result">Number of&nbsp;Sales required to&nbsp;Breakeven</th>
 						<td>
 							<div class="field  wpc-blue-marked-result">
-								<input type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_be_a()"/>
+								<input class="form-control" type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_be_a()"/>
 							</div>
 						</td>
 						<td>
 							<div class="field">
-								<input type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_be_m()"/>
+								<input class="form-control" type="number" class="form-control wpc-blue-marked-result" readonly="readonly" data-bind="value: number_be_m()"/>
 							</div>
 						</td>
 
@@ -197,7 +197,7 @@
 						<td class="subtable -t-b">
 							<div class="field">
 								<div class="wpc-input-group">
-									<input type="number" readonly="readonly" data-bind="value: gprofit_a()"/>
+									<input class="form-control" type="number" readonly="readonly" data-bind="value: gprofit_a()"/>
 									<span>%</span>
 								</div>
 							</div>
@@ -207,13 +207,7 @@
 					</tr>
 <!-- 5 -->
 					<tr class="divider">
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
+						<th colspan="7"></th>
 					</tr>
 <!-- 6 -->
 					<tr>
@@ -222,7 +216,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" data-bind="value: profit_a"/>
+									<input class="form-control" type="number" data-bind="value: profit_a"/>
 								</div>
 							</div>
 						</td>
@@ -230,7 +224,7 @@
 							<div class="field">
 								<div class="wpc-input-group">
 									<span>$</span>
-									<input type="number" readonly="readonly" data-bind="value: profit_m()"/>
+									<input class="form-control" type="number" readonly="readonly" data-bind="value: profit_m()"/>
 								</div>
 							</div>
 						</td>
