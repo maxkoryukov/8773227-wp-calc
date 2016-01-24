@@ -12,6 +12,17 @@ Use one of the following shortcodes to include calculator to your WordPress page
 * \[calcseven_calc4\] - Labour Hour
 * \[calcseven_calc5\] - Breakeven Calculator
 
+### 2. Worktime Calculator
+
+    [calcseven_calc2 title="Your Title"]
+
+
+Description.
+
+* **title** - optional header for calculator.
+
+	Default: `NULL`
+
 ### 3. Cashflow Calculator
 
     [calcseven_calc3 title="Your Title"]
