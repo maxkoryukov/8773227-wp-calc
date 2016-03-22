@@ -4,7 +4,7 @@
  * Description: Financial calculators for 'CFO On Call' : http://www.cfooncallmembers.com.au/
  * Author: Maksim Koryukov
  * Author URI: https://github.com/maxkoryukov
- * Version: 0.2.0
+ * Version: 0.3.0
  * Plugin URI: https://github.com/maxkoryukov/cfo-on-call-calculator/
  */
 
@@ -29,5 +29,6 @@ include_once( dirname( __FILE__ ) . '/calcseven-calc2-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc3-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc4-wrapper.php' );
 include_once( dirname( __FILE__ ) . '/calcseven-calc5-wrapper.php' );
+include_once( dirname( __FILE__ ) . '/calcseven-calc6-wrapper.php' );
 
 ?>

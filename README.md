@@ -11,6 +11,7 @@ Use one of the following shortcodes to include calculator to your WordPress page
 * \[calcseven_calc3\] - Cashflow Calculator
 * \[calcseven_calc4\] - Labour Hour
 * \[calcseven_calc5\] - Breakeven Calculator
+* \[calcseven_calc6\] - Markup Margin Calc
 
 ### 3. Cashflow Calculator
 

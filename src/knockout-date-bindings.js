@@ -95,7 +95,7 @@
             var value = valueAccessor();
             var valueUnwrapped = ko.utils.unwrapObservable(value);
             if (valueUnwrapped) {
-              
+
               function updateTimeValue(){
 //                        element.value = moment(valueUnwrapped).format('L');
                 var dateFormat = allBindingsAccessor().dateFormat

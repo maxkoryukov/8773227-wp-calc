@@ -1,0 +1,64 @@
+@import ( reference, once, less) "common.less";
+
+/* *************
+	CALC 6
+************* */
+
+.wpc-calc
+{
+	.form-6
+	{
+
+		.cfo-form-horizontal:extend(.form-horizontal)
+		{
+			@input-width-sm: 3;
+			@input-width-xs: 3;
+
+			@label-width-sm: 6 - @input-width-sm;
+			@label-width-xs: 6 - @input-width-xs;
+
+			.form-horizontal();
+
+			.cfo-grp:extend(.form-group)
+			{
+				.form-group();
+
+				&>label
+				{
+					.make-sm-column(@label-width-sm);
+					.make-xs-column(@label-width-xs);
+				}
+				&>div
+				{
+					.make-sm-column(@input-width-sm);
+					.make-xs-column(@input-width-xs);
+					margin-bottom:0;
+
+
+					&>input:extend(.form-control)
+					{
+						.form-control();
+
+						&:not([readonly])
+						{
+							background-color: @editable_input_color;
+						}
+					}
+
+					&.wpc-input-group
+					{
+						input
+						{
+							border-top-right-radius: 0;
+							border-bottom-right-radius: 0;
+						}
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+}

@@ -69,6 +69,7 @@
 					<li><a href="<?php print($p . "?c=3") ?>">(not) Calc 3</a></li>
 					<li><a href="<?php print($p . "?c=4") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 4</a></li>
 					<li><a href="<?php print($p . "?c=5") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 5</a></li>
+					<li><a href="<?php print($p . "?c=6") ?>"><i class="glyphicon glyphicon-ok"></i> Calc 6</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
@@ -92,7 +93,7 @@
 
 	<main class="container">
 <?php
-	if ($c > 0 && $c < 6)
+	if ($c > 0 && $c < 7)
 	{
 		include ('src/calcseven-calc' . $c . '.php');
 	}
@@ -103,6 +104,7 @@
 	<script type="text/javascript">
 		CalcSeven = window;
 	</script>
+	<script type="text/javascript" src="src/calcseven-calc6.js"></script>
 	<script type="text/javascript" src="src/calcseven-calc4.js"></script>
 	<script type="text/javascript" src="src/calcseven-calc3.js"></script>
 	<script type="text/javascript" src="src/calcseven-calc1.js"></script>
