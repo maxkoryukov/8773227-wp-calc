@@ -43,6 +43,16 @@ Multitabbed calculator for cashflows.
 
 	Default: `NULL`
 
+### 6. Markup Margin Calc
+
+    [calcseven_calc6 title="title"]
+
+* **title** - optional header for calculator.
+
+	Default: `NULL`
+
+Trivial margin calculator, based on _cost_ and _??_.
+
 ## Credits
 
 Thanks to:
