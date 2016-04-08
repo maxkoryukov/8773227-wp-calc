@@ -7,11 +7,11 @@ WordPress plugin which provide access to financial calculators.
 Use one of the following shortcodes to include calculator to your WordPress page:
 
 * \[calcseven_calc1\] - Sales And Collections
-* \[calcseven_calc2\] - [Key Numbers](#key-numbers)
-* \[calcseven_calc3\] - [Cashflow Calculator](#cashflow-calculator)
-* \[calcseven_calc4\] - [Labour Hour](#labour-hour)
+* \[calcseven_calc2\] - [Key Numbers](#2-key-numbers)
+* \[calcseven_calc3\] - [Cashflow Calculator](#3-cashflow-calculator)
+* \[calcseven_calc4\] - [Labour Hour](#4-labour-hour)
 * \[calcseven_calc5\] - Breakeven Calculator
-* \[calcseven_calc6\] - [Markup Margin Calc](#markup-margin-calc)
+* \[calcseven_calc6\] - [Markup Margin Calc](#6-markup-margin-calc)
 
 ### 2. Key Numbers
 
